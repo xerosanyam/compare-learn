@@ -1,5 +1,12 @@
 <template>
-  <div class="prose max-w-5xl mx-auto pt-4 pb-64">
+  <div class="prose prose-sm max-w-5xl mx-auto pt-4 pb-64">
+    <div class="fixed top-0 right-0">
+      <ul>
+        <li v-for="topic in pages" :key="topic">
+          <a :href="'#' + topic">{{ topic }}</a>
+        </li>
+      </ul>
+    </div>
     <div class="flex mb-4">
       <div class="w-full font-bold text-xl text-center">Java</div>
       <div class="w-full font-bold text-xl text-center">Javascript</div>
@@ -8,10 +15,15 @@
       <div class="flex flex-row space-x-32">
         <nuxt-content
           v-if="javaPages[page]"
+          :id="page"
           class="flex-1 overflow-hidden"
           :document="javaPages[page]"
         />
-        <div v-else class="flex-1 flex items-center justify-center h-40">
+        <div
+          v-else
+          :id="page"
+          class="flex-1 flex items-center justify-center h-40"
+        >
           <div>&nbsp;</div>
         </div>
         <nuxt-content
@@ -59,6 +71,7 @@ export default {
         pages.push(page.slug)
       }
     }
+
     console.log('asyncData -> pages', pages)
 
     javaPages = javaPages.reduce((result, item, index) => {

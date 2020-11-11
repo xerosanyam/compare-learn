@@ -12,7 +12,7 @@ const nums = [1, 30, 4, 21, 100000]
 nums.sort() // [1, 100000, 21, 30, 4]
 ```
 
-> Numbers are not sorted!
+> We can see, Numbers are not sorted!
 
 ### Correct way to sort num array
 
