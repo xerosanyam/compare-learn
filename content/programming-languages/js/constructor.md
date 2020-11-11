@@ -1,4 +1,4 @@
-## Constructor
+## Multiple constructor possible?
 Single constructor because **no function overloading is present**
 ### Hack
 - js function can take any number of arguments

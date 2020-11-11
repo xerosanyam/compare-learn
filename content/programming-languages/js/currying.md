@@ -9,4 +9,4 @@ const add = x => y => z => x+y+z
 - when you cannot supply all arguments to function at one time
 
 ### cons
-- will have to change defination or wrap inside another function if param is increased
+- if param is increased, will have to change defination or wrap inside another function 
