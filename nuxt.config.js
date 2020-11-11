@@ -2,7 +2,7 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   router: {
-    base: '/compare-learn/',
+    base: process.env.NODE_ENV !== 'development' ? '/compare-learn/' : '',
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -41,7 +41,7 @@ export default {
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {
-    liveEdit: true,
+    liveEdit: false,
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
