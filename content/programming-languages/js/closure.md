@@ -18,3 +18,24 @@ person.getName() // "Sanyam"
 
 #### Related questions
 - could we create objects if closure was not provided by JS?
+
+- make public prop private by creating variable within constructor function
+
+```js
+// old
+function Bird(){
+    this.name = 'donald'
+}
+b = new Bird()
+b.name // "donald", can be modified also
+
+// better + secure
+function Bird(){
+    let name = 'donald'
+    this.getName = function(){
+        return name
+    }
+}
+b = new Bird()
+b.name // undefined
+```
