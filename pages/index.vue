@@ -1,68 +1,81 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">compare-learn</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="prose max-w-5xl mx-auto pt-4 pb-64">
+    <div class="flex mb-4">
+      <div class="w-full font-bold text-xl text-center">Java</div>
+      <div class="w-full font-bold text-xl text-center">Javascript</div>
+    </div>
+    <div v-for="page in pages" :key="page" class="border-b pb-8">
+      <div class="flex flex-row space-x-32">
+        <nuxt-content
+          v-if="javaPages[page]"
+          class="flex-1 overflow-hidden"
+          :document="javaPages[page]"
+        />
+        <div v-else class="flex-1 flex items-center justify-center h-40">
+          <div>&nbsp;</div>
+        </div>
+        <nuxt-content
+          v-if="jsPages[page]"
+          class="flex-1 overflow-hidden"
+          :document="jsPages[page]"
+        />
+        <div v-else class="flex-1 flex items-center justify-center h-40">
+          <div>&nbsp;</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({ $content, params, error }) {
+    let javaPages = await $content('java')
+      .fetch()
+      .catch((err) => {
+        console.log('asyncData -> err', err)
+        error({ statusCode: 404, message: 'Page not found' })
+      })
+    console.log('asyncData -> javaPages', javaPages)
+
+    let jsPages = await $content('js')
+      .fetch()
+      .catch((err) => {
+        console.log('asyncData -> err', err)
+        error({ statusCode: 404, message: 'Page not found' })
+      })
+    console.log('asyncData -> jsPages', jsPages)
+
+    const allPages = [...javaPages, ...jsPages]
+    console.log('asyncData -> pages', allPages)
+    allPages.sort(
+      (page1, page2) => new Date(page1.createdAt) - new Date(page2.createdAt)
+    )
+    console.log('asyncData -> pages', allPages)
+    const pages = []
+
+    for (const page of allPages) {
+      if (!pages.includes(page.slug)) {
+        pages.push(page.slug)
+      }
+    }
+    console.log('asyncData -> pages', pages)
+
+    javaPages = javaPages.reduce((result, item, index) => {
+      result[item.slug] = item
+      return result
+    }, {})
+
+    jsPages = jsPages.reduce((result, item, index) => {
+      result[item.slug] = item
+      return result
+    }, {})
+
+    return {
+      javaPages,
+      jsPages,
+      pages,
+    }
+  },
+}
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
