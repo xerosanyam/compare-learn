@@ -1,5 +1,5 @@
 ## what is currying?
-currying function means, converting N paramter function to N functions with 1 parameter
+currying function means, converting N parameter function to N functions with 1 parameter
 - very interesting! very clean with arrow functions
 
 ```js
