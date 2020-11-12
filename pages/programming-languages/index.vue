@@ -3,7 +3,7 @@
     <div class="fixed hidden sm:block mr-4 top-0 right-0">
       <ul>
         <li v-for="topic in pages" :key="topic">
-          <a :href="'#' + topic">{{ topic }}</a>
+          <nuxt-link :to="{ hash: '#' + topic }">{{ topic }}</nuxt-link>
         </li>
       </ul>
     </div>
