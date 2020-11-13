@@ -1,4 +1,4 @@
-## Sorting array
+## Array.prototype.sort()
 
 - does in place & also returns sorted array
 - sorting is peculiar
@@ -23,3 +23,5 @@ nums.sort((first, second) => first - second)
 ```js
 dates.sort((first, second)=> new Date(first)-new Date(second))
 ```
+
+> functional. requires a callback to sort

@@ -11,7 +11,7 @@ ConstructorName.prototype.propertyName = value
 - reducing duplicate variables
 
 ### related
-- own property
+- hasOwnProperty
 
 ```js
 // instead of adding each property manually, we can overwrite it with new object
@@ -39,15 +39,4 @@ Dog.prototype = {
         console.log('my name is'+this.name)
     }
 }
-```
-### isPrototypeOf
-```js
-Dog.prototype.isPrototypeOf(beagle)
-```
-
-- all objects have prototype
-- prototype is an object
-- therefore an object's prototype can have its own prototype
-```js
-object.prototype.prototype
 ```

@@ -8,3 +8,11 @@ console.log(beagle.constructor === Dog)
 ```
 
 - can be overwritten, therefore better to use instanceof method to check type of object
+
+#### objects can be created without constructor
+```js
+var superProto = {
+    name:'sanyam'
+}
+superProto.constructor // Object(){}
+```

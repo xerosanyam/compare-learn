@@ -15,23 +15,23 @@
       <div class="flex flex-row space-x-8 sm:space-x-32">
         <nuxt-content
           v-if="javaPages[page]"
-          :id="page"
           class="flex-1 overflow-hidden"
           :document="javaPages[page]"
+        />
+        <div v-else class="flex-1 flex items-center justify-center h-40">
+          <div>&nbsp;</div>
+        </div>
+        <nuxt-content
+          v-if="jsPages[page]"
+          :id="page"
+          class="flex-1 overflow-hidden"
+          :document="jsPages[page]"
         />
         <div
           v-else
           :id="page"
           class="flex-1 flex items-center justify-center h-40"
         >
-          <div>&nbsp;</div>
-        </div>
-        <nuxt-content
-          v-if="jsPages[page]"
-          class="flex-1 overflow-hidden"
-          :document="jsPages[page]"
-        />
-        <div v-else class="flex-1 flex items-center justify-center h-40">
           <div>&nbsp;</div>
         </div>
       </div>

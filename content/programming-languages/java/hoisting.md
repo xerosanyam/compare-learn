@@ -1,2 +1,2 @@
 ### what is hoisting?
-- not present
+- not present in java

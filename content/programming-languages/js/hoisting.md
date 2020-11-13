@@ -1,6 +1,6 @@
 ### what is hoisting?
 - able to access a variable before declaration
-- this is done by js. it raises up(hoists) the variables
+- js raises up(hoists) the declarations
 
 ```js
 catName('kitty') // cat name is kitty

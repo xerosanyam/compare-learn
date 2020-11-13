@@ -1,5 +1,5 @@
 ## Multiple constructor possible?
-Single constructor because **no function overloading is present**
+No. Since **function overloading is not present** we can have only Single constructor.
 ### Hack
 - js function can take any number of arguments
 - it becomes duty of developer to check parameters and work accordingly

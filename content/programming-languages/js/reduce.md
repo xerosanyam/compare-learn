@@ -1,1 +1,1 @@
-## Reduce
+## Array.prototype.reduce()
