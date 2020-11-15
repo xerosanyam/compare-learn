@@ -6,3 +6,4 @@
 - functional programming is declarative form of programming
   - you tell computer what you want done by calling a method
   - ex> map() method that can iterate over array w/o worrying about indexes
+> fp focuses on **what**. imperative focuses on **how**
