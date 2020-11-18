@@ -9,6 +9,12 @@
         >Computer Science -> Paradigms</nuxt-link
       >
     </div>
+    <div>
+      <nuxt-link to="/ui-libraries">UI Libraries</nuxt-link>
+    </div>
+    <div>
+      <nuxt-link to="/mixed">Mixed</nuxt-link>
+    </div>
   </div>
 </template>
 
