@@ -1,0 +1,7 @@
+- Life Cycle
+  - componentDidUpdate - going to be depreceated in 17
+  - componentDidMount
+    - call API
+    - attach event listener
+  - componentWillUnmount
+  - shouldComponentUpdate(nextProps, nextState)

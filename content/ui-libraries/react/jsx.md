@@ -1,7 +1,7 @@
 ### jsx
 - benefit: full programmatic power of js in html
 - not valid js, hence must be converted to js. done using babel transpiler
-- simply include js code within curly brace
+- simply include js code within round brace
 - must return a single element
 - tool to write readable html within JS
 
@@ -9,7 +9,7 @@
 const JSX = (
     <div>
         {/* some comment here */}
-        <h1>Hello</h1>
+        <h1 className="hello">Hello</h1>
     </div>
 )
 //Render JSX

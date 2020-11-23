@@ -18,6 +18,9 @@ const DemoComponent = function(){
 ```
 
 ### Using Class syntax
+1. extend React.component
+2. make a constructor
+3. make a render method
 ```jsx
 class Kitten extends React.Component{
     constructor(props){
@@ -32,3 +35,12 @@ class Kitten extends React.Component{
 ```
 - Kitten extends React.Component class, so now it has many features of react.
   - local state, lifecycle hooks
+- stateless functional component
+  - function that accepts props, returns JSX
+- stateless component
+  - class that extends React.component, but does not uses an internal state
+- stateful component
+  - class component that maintains own internal state, referred simply as react components
+  - common pattern: reduce stateful components & create stateless components
+    - helps contain state management to specific area of app
+    - improves dev & maintenance as it makes easier to follow changes to state
