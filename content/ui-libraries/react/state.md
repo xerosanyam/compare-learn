@@ -13,3 +13,7 @@
     }));
     ```
   - object literal is to be wrapped in paranthesis, otherwise js thinks it is block
+
+
+### React hooks
+- easy to share state logic b/w components

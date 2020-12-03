@@ -2,7 +2,7 @@
 - generally used when you don't have constructor functions
 ```js
 Dog.prototype.isPrototypeOf(beagle) // with constructor function, use prototype
-beagle.isPrototypeOf(goofy) // can direclty used with object
+beagle.isPrototypeOf(goofy) // can directly used with object
 ```
 
 - all objects have prototype
@@ -26,4 +26,5 @@ var sub = Object.create(subProto);
 
 console.log(superProto.isPrototypeOf(sub));  // **true**
 console.log(sub instanceof superProto);      // TypeError
+console.log(sub instanceof superProto.constructor)  // true
 ```

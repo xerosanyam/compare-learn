@@ -1,34 +1,49 @@
 ### inhertiance
-1. Create Instance of supertype or parent
-    ```js
+
+#### using functions
+
+```js
     // let animal = new Animal() // has some disadvantage, therefore not used
+    // 1. Create Instance of parent
     let Animal = function(){}
     Animal.prototype.eat = function(){
         return 'nom nom'
     }
-    let animal = Object.create(Animal.prototype)
-    ```
-2. Set prototype of subtype/child to be instance of parent
-    ```js
+
+    // 2. Set prototype of child to be instance of parent & update constructor
     let Bird = function(){}
     Bird.prototype = Object.create(Animal.prototype)
-    ```
-3. Update constructor
-    ```js
     Bird.prototype.constructor = Bird
-    ```
-4. add own methods
-    ```js
+
+    // 3. add own methods
     Bird.prototype.fly = function(){
         return 'i can fly'
     }
-    ```
-5. Override parent method
-    ```js
+
+    // 4. Override parent method
     Bird.prototype.eat = function(){
         return 'eating nicely'
     }
-    ```
+```
+
+### above example using classes
+```js
+class Animal{
+    eat(){
+        return 'nom nom'
+    }
+}
+class Bird extends Animal{
+    fly(){
+        return 'I can fly!'
+    }
+    // override
+    eat(){
+        return 'burp burp'
+    }
+}
+```
+
 ### Mixin
 - added to object not constructor, therefore **protoype** is not used
 - add unrelated function to both obj
@@ -41,4 +56,4 @@ let flyMixin = function(obj){
 }
 flyMixin(bird)
 flyMixin(airplane)
-```
+````
