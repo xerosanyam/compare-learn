@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed w-40 m-4">
+  <div class="fixed w-40 p-4 bg-white">
     <ul>
       <li v-for="topic in pages" :key="topic" class="text-xs list-disc">
         <nuxt-link :to="{ hash: '#' + topic }">{{ topic }}</nuxt-link>
