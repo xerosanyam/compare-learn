@@ -1,9 +1,14 @@
 <template>
   <div>
+    <a
+      v-if="pathname !== '/'"
+      class="p-2 text-white bg-black cursor-pointer"
+      href="/"
+      >Compare & Learn</a
+    >
     <Nuxt />
   </div>
 </template>
-
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
