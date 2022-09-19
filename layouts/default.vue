@@ -1,9 +1,6 @@
 <template>
   <div>
-    <a
-      v-if="pathname !== '/'"
-      class="p-2 text-white bg-black cursor-pointer"
-      href="/"
+    <a class="p-2 text-white bg-black cursor-pointer" href="/"
       >Compare & Learn</a
     >
     <Nuxt />
