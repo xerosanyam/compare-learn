@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fcompare-learn\u002F_nuxt\u002Fstatic\u002F1663602670",layout:"default",error:a,serverRendered:true,routePath:"\u002F",config:{_app:{basePath:"\u002Fcompare-learn\u002F",assetsPath:"\u002Fcompare-learn\u002F_nuxt\u002F",cdnURL:a},content:{dbHash:"89a1503b"}}}}(null));
