@@ -24,6 +24,9 @@
     <div>
       <nuxt-link to="/mixed">Mixed</nuxt-link>
     </div>
+    <div>
+      <nuxt-link to="/concurrency">Concurrency</nuxt-link>
+    </div>
   </div>
 </template>
 
