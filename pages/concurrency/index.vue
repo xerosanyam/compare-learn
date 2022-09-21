@@ -59,7 +59,12 @@ export default {
       allPages = [...allPages, ...data]
     }
 
-    allPages.sort((page1, page2) => page1.slug - page2.slug)
+    allPages.sort((page1, page2) => {
+      if (page1.slug < page2.slug) {
+        return -1
+      }
+      return 1
+    })
 
     // console.log('asyncData -> pages', allPages)
     const pages = []
