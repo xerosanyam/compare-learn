@@ -1,19 +1,31 @@
-### State
-- this.state = {}
-- update state using this.setState({username:'Lewis'})
-    ```js
-    //wrong
-    this.setState({
-        counter: this.state.counter + this.props.increment
-    });
+### useState
 
-    //right
-    this.setState((state,props)=>({
-        counter: state.counter + props.increment
-    }));
-    ```
-  - object literal is to be wrapped in paranthesis, otherwise js thinks it is block
+```js
+const [value, setValue] = useState(initialValue)
+```
 
+#### Things to keep in mind:
 
-### React hooks
-- easy to share state logic b/w components
+- if initialValue is a computation, make it function, ie
+  instead of this
+
+  ```js
+  const [] = useState(localStorage.getItem('name') || '')
+  ```
+
+  do this
+
+  ```js
+  const [] = useState(() => localStorage.getItem('name') || '')
+  ```
+
+  - useState ignores the initialValue after first render
+  - also called Lazy state initialization
+
+#### Use old value
+
+```js
+useEffect(() => {
+  setCount((oldValue) => (oldValue += 1))
+})
+```
