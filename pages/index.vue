@@ -9,14 +9,10 @@
       If you know Java, it makes it comparatively easier to learn Javascript.
     </p>
     <div>
-      <nuxt-link to="/programming-languages"
-        >Programming Languages [Java, Javascript]</nuxt-link
-      >
+      <nuxt-link to="/programming-languages">Programming Languages [Java, Javascript]</nuxt-link>
     </div>
     <div>
-      <nuxt-link to="/computer-science/paradigms"
-        >Computer Science -> Paradigms</nuxt-link
-      >
+      <nuxt-link to="/computer-science/paradigms">Computer Science -> Paradigms</nuxt-link>
     </div>
     <div>
       <nuxt-link to="/ui-libraries">UI Libraries [React, Vue]</nuxt-link>
@@ -29,5 +25,3 @@
     </div>
   </div>
 </template>
-
-<script></script>
