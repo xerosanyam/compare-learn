@@ -1,12 +1,7 @@
 export default defineNuxtConfig({
-  // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
-  router: {
-    base: process.env.NODE_ENV !== 'development' ? '/compare-learn/' : '',
-  },
-
-  // Global page headers (https://go.nuxtjs.dev/config-head)
+  // https://nuxt.com/docs/api/nuxt-config#baseurl
   app: {
+    baseURL: process.env.NODE_ENV !== 'development' ? '/compare-learn/' : '',
     head: {
       title: 'Compare Learn',
       meta: [
@@ -27,29 +22,10 @@ export default defineNuxtConfig({
     },
   },
 
-  // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
-
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
-
-  // Auto import components (https://go.nuxtjs.dev/config-components)
-
-  // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/content
-    // https://go.nuxtjs.dev/eslint
-    // '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxt/content',
   ],
 
-  // Content module configuration (https://go.nuxtjs.dev/config-content)
-  content: {
-    liveEdit: false,
-  },
 
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
 })
