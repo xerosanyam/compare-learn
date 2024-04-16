@@ -9,19 +9,19 @@
       If you know Java, it makes it comparatively easier to learn Javascript.
     </p>
     <div>
-      <nuxt-link to="/programming-languages">Programming Languages [Java, Javascript]</nuxt-link>
+      <nuxt-link to="/programming-languages">Programming Languages [Java vs Javascript]</nuxt-link>
     </div>
     <div>
-      <nuxt-link to="/computer-science/paradigms">Computer Science -> Paradigms</nuxt-link>
+      <nuxt-link to="/computer-science/paradigms">Computer Science -> Paradigms [Object vs Functional]</nuxt-link>
     </div>
     <div>
-      <nuxt-link to="/ui-libraries">UI Libraries [React, Vue]</nuxt-link>
+      <nuxt-link to="/ui-libraries">UI Libraries [React vs Vue]</nuxt-link>
+    </div>
+    <div>
+      <nuxt-link to="/concurrency">Concurrency (how JS works)</nuxt-link>
     </div>
     <div>
       <nuxt-link to="/mixed">Mixed</nuxt-link>
-    </div>
-    <div>
-      <nuxt-link to="/concurrency">Concurrency</nuxt-link>
     </div>
   </div>
 </template>

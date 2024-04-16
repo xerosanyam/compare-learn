@@ -3,29 +3,12 @@
     <Toc :pages="pages" />
     <div class="max-w-5xl px-4 pt-4 pb-64 mx-auto prose-sm prose">
       <div class="flex">
-        <div
-          v-for="item in folderToLoad"
-          :key="item.path"
-          class="w-full text-2xl font-bold text-center"
-        >
-          {{ item.name }}
-        </div>
       </div>
       <div v-for="page in pages" :key="page" class="pb-8 border-b">
         <div class="flex flex-row space-x-8 sm:space-x-32">
-          <div
-            v-for="item in folderToLoad"
-            :key="item.path"
-            class="flex-1 overflow-hidden"
-          >
-            <nuxt-content
-              v-if="page in item.items"
-              class="flex-1 overflow-hidden"
-              :document="item.items[page]"
-            />
-            <div v-else class="flex items-center justify-center flex-1 h-40">
-              <div>&nbsp;</div>
-            </div>
+          <ContentDoc v-if="data1[page]" class="flex-1 overflow-hidden" :path="data1[page]._path" />
+          <div v-else class="flex items-center justify-center flex-1 h-40">
+            <div>&nbsp;</div>
           </div>
         </div>
       </div>
@@ -33,52 +16,27 @@
   </div>
 </template>
 
-<script>
-export default {
-  async asyncData({ $content, params, error }) {
-    const folderToLoad = [
-      {
-        path: 'concurrency/javascript',
-        name: 'Javascript',
-        items: {},
-      },
-    ]
-    let allPages = []
-    for (const item of folderToLoad) {
-      // folderToLoad.forEach(async (item) => {
-      const data = await $content(item.path)
-        .fetch()
-        .catch((err) => {
-          console.log('asyncData -> err', err)
-          error({ statusCode: 404, message: 'Page not found' })
-        })
-      data.forEach((blog) => {
-        item.items[blog.slug] = blog
-      })
-      console.log('asyncData -> item.path', data)
-      allPages = [...allPages, ...data]
-    }
+<script setup>
+const url1 = 'concurrency/javascript'
 
-    allPages.sort((page1, page2) => {
-      if (page1.slug < page2.slug) {
-        return -1
-      }
-      return 1
-    })
+let { data: data1 } = await useAsyncData('js', () => queryContent(url1).find())
 
-    // console.log('asyncData -> pages', allPages)
-    const pages = []
 
-    for (const page of allPages) {
-      if (!pages.includes(page.slug)) {
-        pages.push(page.slug)
-      }
-    }
+const allPages = [...data1.value]
 
-    return {
-      folderToLoad,
-      pages,
-    }
-  },
+const getSlug = (path) => {
+  return path?.split('/').pop()
 }
+const pages = []
+for (const page of allPages) {
+  if (!pages.includes(getSlug(page._path))) {
+    pages.push(getSlug(page._path))
+  }
+}
+
+data1 = data1.value.reduce((result, item) => {
+  result[getSlug(item._path)] = item
+  return result
+}, {})
+
 </script>

@@ -1,7 +1,6 @@
 export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#baseurl
   app: {
-    baseURL: process.env.NODE_ENV !== 'development' ? '/compare-learn/' : '',
     head: {
       title: 'Compare Learn',
       meta: [

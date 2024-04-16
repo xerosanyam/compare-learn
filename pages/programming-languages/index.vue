@@ -9,11 +9,11 @@
       <div class="w-full">
         <div v-for="page in pages" :key="page" class="pb-8 border-b">
           <div class="flex flex-row space-x-8 sm:space-x-32">
-            <ContentDoc v-if="javaPages[page]" class="flex-1 overflow-hidden" :path="javaPages[page]._path" />
+            <ContentDoc v-if="data1[page]" class="flex-1 overflow-hidden" :path="data1[page]._path" />
             <div v-else class="flex items-center justify-center flex-1 h-40">
               <div>&nbsp;</div>
             </div>
-            <ContentDoc v-if="jsPages[page]" :id="page" class="flex-1 overflow-hidden" :path="jsPages[page]._path" />
+            <ContentDoc v-if="data2[page]" :id="page" class="flex-1 overflow-hidden" :path="data2[page]._path" />
             <div v-else :id="page" class="flex items-center justify-center flex-1 h-40">
               <div>&nbsp;</div>
             </div>
@@ -26,13 +26,14 @@
 </template>
 
 <script setup>
+const url1 = '/programming-languages/java'
+const url2 = '/programming-languages/js'
 
+let { data: data1 } = await useAsyncData('js', () => queryContent(url1).find())
 
-let { data: javaPages } = await useAsyncData('js', () => queryContent('/programming-languages/java').find())
+let { data: data2 } = await useAsyncData('js', () => queryContent(url2).find())
 
-let { data: jsPages } = await useAsyncData('js', () => queryContent('/programming-languages/js').find())
-
-const allPages = [...javaPages.value, ...jsPages.value]
+const allPages = [...data1.value, ...data2.value]
 
 const getSlug = (path) => {
   return path?.split('/').pop()
@@ -44,11 +45,11 @@ for (const page of allPages) {
   }
 }
 
-javaPages = javaPages.value.reduce((result, item) => {
+data1 = data1.value.reduce((result, item) => {
   result[getSlug(item._path)] = item
   return result
 }, {})
-jsPages = jsPages.value.reduce((result, item) => {
+data2 = data2.value.reduce((result, item) => {
   result[getSlug(item._path)] = item
   return result
 }, {})

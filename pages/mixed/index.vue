@@ -7,25 +7,12 @@
       </div>
       <div v-for="page in pages" :key="page" class="pb-8 border-b">
         <div class="flex flex-row space-x-8 sm:space-x-32">
-          <nuxt-content
-            v-if="javaPages[page]"
-            class="flex-1 overflow-hidden"
-            :document="javaPages[page]"
-          />
+          <ContentDoc v-if="data1[page]" class="flex-1 overflow-hidden" :path="data1[page]._path" />
           <div v-else class="flex items-center justify-center flex-1 h-40">
             <div>&nbsp;</div>
           </div>
-          <nuxt-content
-            v-if="jsPages[page]"
-            :id="page"
-            class="flex-1 overflow-hidden"
-            :document="jsPages[page]"
-          />
-          <div
-            v-else
-            :id="page"
-            class="flex items-center justify-center flex-1 h-40"
-          >
+          <ContentDoc v-if="data2[page]" :id="page" class="flex-1 overflow-hidden" :path="data2[page]._path" />
+          <div v-else :id="page" class="flex items-center justify-center flex-1 h-40">
             <div>&nbsp;</div>
           </div>
         </div>
@@ -34,56 +21,32 @@
   </div>
 </template>
 
-<script>
-export default {
-  async asyncData({ $content, params, error }) {
-    let javaPages = await $content('mixed/x')
-      .fetch()
-      .catch((err) => {
-        console.log('asyncData -> err', err)
-        error({ statusCode: 404, message: 'Page not found' })
-      })
-    console.log('asyncData -> javaPages', javaPages)
+<script setup>
+const url1 = 'mixed/x'
+const url2 = 'mixed/y'
 
-    let jsPages = await $content('mixed/y')
-      .fetch()
-      .catch((err) => {
-        console.log('asyncData -> err', err)
-        error({ statusCode: 404, message: 'Page not found' })
-      })
-    console.log('asyncData -> jsPages', jsPages)
+let { data: data1 } = await useAsyncData('js', () => queryContent(url1).find())
 
-    const allPages = [...javaPages, ...jsPages]
-    console.log('asyncData -> pages', allPages)
-    allPages.sort(
-      (page1, page2) => new Date(page1.createdAt) - new Date(page2.createdAt)
-    )
-    console.log('asyncData -> pages', allPages)
-    const pages = []
+let { data: data2 } = await useAsyncData('js', () => queryContent(url2).find())
 
-    for (const page of allPages) {
-      if (!pages.includes(page.slug)) {
-        pages.push(page.slug)
-      }
-    }
+const allPages = [...data1.value, ...data2.value]
 
-    console.log('asyncData -> pages', pages)
-
-    javaPages = javaPages.reduce((result, item, index) => {
-      result[item.slug] = item
-      return result
-    }, {})
-
-    jsPages = jsPages.reduce((result, item, index) => {
-      result[item.slug] = item
-      return result
-    }, {})
-
-    return {
-      javaPages,
-      jsPages,
-      pages,
-    }
-  },
+const getSlug = (path) => {
+  return path?.split('/').pop()
 }
+const pages = []
+for (const page of allPages) {
+  if (!pages.includes(getSlug(page._path))) {
+    pages.push(getSlug(page._path))
+  }
+}
+
+data1 = data1.value.reduce((result, item) => {
+  result[getSlug(item._path)] = item
+  return result
+}, {})
+data2 = data2.value.reduce((result, item) => {
+  result[getSlug(item._path)] = item
+  return result
+}, {})
 </script>
