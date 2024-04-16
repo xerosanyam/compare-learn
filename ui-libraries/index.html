@@ -1,19 +1,582 @@
 <!DOCTYPE html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compare Learn</title>
+<title>UseReducer</title>
 <meta name="description" content>
 <link rel="icon" type="image/x-icon" href="/compare-learn/favicon.ico">
-<link rel="preload" as="fetch" crossorigin="anonymous" href="/compare-learn/ui-libraries/_payload.json?4bc8380b-aa7a-430c-ad18-bb84f846d9a5">
+<meta property="og:title" content="UseReducer">
+<link rel="preload" as="fetch" crossorigin="anonymous" href="/ui-libraries/_payload.json?afe9aa14-dbd7-4c42-966d-463fb7e42fd2">
 <style>/*! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com*/*,:after,:before{border:0 solid #e5e7eb;box-sizing:border-box}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;tab-size:4;-webkit-tap-highlight-color:transparent}body{line-height:inherit;margin:0}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-size:1em;font-variation-settings:normal}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:initial}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}button,input,optgroup,select,textarea{color:inherit;font-family:inherit;font-feature-settings:inherit;font-size:100%;font-variation-settings:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:initial;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:initial}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{color:#9ca3af;opacity:1}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}[hidden]{display:none}*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.prose{color:var(--tw-prose-body);max-width:65ch}.prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em;margin-top:1.25em}.prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-lead);font-size:1.25em;line-height:1.6;margin-bottom:1.2em;margin-top:1.2em}.prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-links);font-weight:500;text-decoration:underline}.prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-bold);font-weight:600}.prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal;margin-bottom:1.25em;margin-top:1.25em;padding-inline-start:1.625em}.prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal}.prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:disc;margin-bottom:1.25em;margin-top:1.25em;padding-inline-start:1.625em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-counters);font-weight:400}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-bullets)}.prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.25em}.prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){border-color:var(--tw-prose-hr);border-top-width:1px;margin-bottom:3em;margin-top:3em}.prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){border-inline-start-color:var(--tw-prose-quote-borders);border-inline-start-width:.25rem;color:var(--tw-prose-quotes);font-style:italic;font-weight:500;margin-bottom:1.6em;margin-top:1.6em;padding-inline-start:1em;quotes:"\201C""\201D""\2018""\2019"}.prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:open-quote}.prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:close-quote}.prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-size:2.25em;font-weight:800;line-height:1.1111111;margin-bottom:.8888889em;margin-top:0}.prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:900}.prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-size:1.5em;font-weight:700;line-height:1.3333333;margin-bottom:1em;margin-top:2em}.prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:800}.prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-size:1.25em;font-weight:600;line-height:1.6;margin-bottom:.6em;margin-top:1.6em}.prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:700}.prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;line-height:1.5;margin-bottom:.5em;margin-top:1.5em}.prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:700}.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:2em;margin-top:2em}.prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){display:block;margin-bottom:2em;margin-top:2em}.prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:2em;margin-top:2em}.prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){border-radius:.3125rem;box-shadow:0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);color:var(--tw-prose-kbd);font-family:inherit;font-size:.875em;font-weight:500;padding-inline-end:.375em;padding-bottom:.1875em;padding-top:.1875em;padding-inline-start:.375em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-code);font-size:.875em;font-weight:600}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:"`"}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:"`"}.prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.875em}.prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.9em}.prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:var(--tw-prose-pre-bg);border-radius:.375rem;color:var(--tw-prose-pre-code);font-size:.875em;font-weight:400;line-height:1.7142857;margin-bottom:1.7142857em;margin-top:1.7142857em;overflow-x:auto;padding-inline-end:1.1428571em;padding-bottom:.8571429em;padding-top:.8571429em;padding-inline-start:1.1428571em}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:initial;border-radius:0;border-width:0;color:inherit;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;padding:0}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:none}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:none}.prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.875em;line-height:1.7142857;margin-bottom:2em;margin-top:2em;table-layout:auto;text-align:start;width:100%}.prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-color:var(--tw-prose-th-borders);border-bottom-width:1px}.prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em;vertical-align:bottom}.prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-color:var(--tw-prose-td-borders);border-bottom-width:1px}.prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:0}.prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:initial}.prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)){border-top-color:var(--tw-prose-th-borders);border-top-width:1px}.prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:top}.prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-captions);font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.prose{--tw-prose-body:#374151;--tw-prose-headings:#111827;--tw-prose-lead:#4b5563;--tw-prose-links:#111827;--tw-prose-bold:#111827;--tw-prose-counters:#6b7280;--tw-prose-bullets:#d1d5db;--tw-prose-hr:#e5e7eb;--tw-prose-quotes:#111827;--tw-prose-quote-borders:#e5e7eb;--tw-prose-captions:#6b7280;--tw-prose-kbd:#111827;--tw-prose-kbd-shadows:17 24 39;--tw-prose-code:#111827;--tw-prose-pre-code:#e5e7eb;--tw-prose-pre-bg:#1f2937;--tw-prose-th-borders:#d1d5db;--tw-prose-td-borders:#e5e7eb;--tw-prose-invert-body:#d1d5db;--tw-prose-invert-headings:#fff;--tw-prose-invert-lead:#9ca3af;--tw-prose-invert-links:#fff;--tw-prose-invert-bold:#fff;--tw-prose-invert-counters:#9ca3af;--tw-prose-invert-bullets:#4b5563;--tw-prose-invert-hr:#374151;--tw-prose-invert-quotes:#f3f4f6;--tw-prose-invert-quote-borders:#374151;--tw-prose-invert-captions:#9ca3af;--tw-prose-invert-kbd:#fff;--tw-prose-invert-kbd-shadows:255 255 255;--tw-prose-invert-code:#fff;--tw-prose-invert-pre-code:#d1d5db;--tw-prose-invert-pre-bg:#00000080;--tw-prose-invert-th-borders:#4b5563;--tw-prose-invert-td-borders:#374151;font-size:1rem;line-height:1.75}.prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.5em;margin-top:.5em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(.prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.75em;margin-top:.75em}.prose :where(.prose>ul>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ul>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(.prose>ol>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ol>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.75em;margin-top:.75em}.prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em;margin-top:1.25em}.prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;padding-inline-start:1.625em}.prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-top:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:2em;margin-top:2em}.prose :where(.prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(.prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}.prose-sm{font-size:.875rem;line-height:1.7142857}.prose-sm :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.1428571em;margin-top:1.1428571em}.prose-sm :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:1.2857143em;line-height:1.5555556;margin-bottom:.8888889em;margin-top:.8888889em}.prose-sm :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.3333333em;margin-top:1.3333333em;padding-inline-start:1.1111111em}.prose-sm :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:2.1428571em;line-height:1.2;margin-bottom:.8em;margin-top:0}.prose-sm :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:1.4285714em;line-height:1.4;margin-bottom:.8em;margin-top:1.6em}.prose-sm :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:1.2857143em;line-height:1.5555556;margin-bottom:.4444444em;margin-top:1.5555556em}.prose-sm :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){line-height:1.4285714;margin-bottom:.5714286em;margin-top:1.4285714em}.prose-sm :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7142857em;margin-top:1.7142857em}.prose-sm :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7142857em;margin-top:1.7142857em}.prose-sm :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.prose-sm :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7142857em;margin-top:1.7142857em}.prose-sm :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){border-radius:.3125rem;font-size:.8571429em;padding-inline-end:.3571429em;padding-bottom:.1428571em;padding-top:.1428571em;padding-inline-start:.3571429em}.prose-sm :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8571429em}.prose-sm :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.9em}.prose-sm :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8888889em}.prose-sm :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){border-radius:.25rem;font-size:.8571429em;line-height:1.6666667;margin-bottom:1.6666667em;margin-top:1.6666667em;padding-inline-end:1em;padding-bottom:.6666667em;padding-top:.6666667em;padding-inline-start:1em}.prose-sm :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.1428571em;margin-top:1.1428571em;padding-inline-start:1.5714286em}.prose-sm :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.1428571em;margin-top:1.1428571em;padding-inline-start:1.5714286em}.prose-sm :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.2857143em;margin-top:.2857143em}.prose-sm :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.4285714em}.prose-sm :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.4285714em}.prose-sm :where(.prose-sm>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.5714286em;margin-top:.5714286em}.prose-sm :where(.prose-sm>ul>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.1428571em}.prose-sm :where(.prose-sm>ul>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.1428571em}.prose-sm :where(.prose-sm>ol>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.1428571em}.prose-sm :where(.prose-sm>ol>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.1428571em}.prose-sm :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.5714286em;margin-top:.5714286em}.prose-sm :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.1428571em;margin-top:1.1428571em}.prose-sm :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.1428571em}.prose-sm :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.2857143em;padding-inline-start:1.5714286em}.prose-sm :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:2.8571429em;margin-top:2.8571429em}.prose-sm :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose-sm :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose-sm :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose-sm :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose-sm :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8571429em;line-height:1.5}.prose-sm :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:1em;padding-bottom:.6666667em;padding-inline-start:1em}.prose-sm :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose-sm :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose-sm :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:1em;padding-bottom:.6666667em;padding-top:.6666667em;padding-inline-start:1em}.prose-sm :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose-sm :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose-sm :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7142857em;margin-top:1.7142857em}.prose-sm :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.prose-sm :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8571429em;line-height:1.3333333;margin-top:.6666667em}.prose-sm :where(.prose-sm>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose-sm :where(.prose-sm>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}.fixed{position:fixed}.m-2{margin:.5rem}.mx-2{margin-left:.5rem;margin-right:.5rem}.mx-auto{margin-left:auto;margin-right:auto}.block{display:block}.flex{display:flex}.h-40{height:10rem}.h-full{height:100%}.w-40{width:10rem}.w-full{width:100%}.max-w-5xl{max-width:64rem}.flex-1{flex:1 1 0%}.cursor-pointer{cursor:pointer}.list-disc{list-style-type:disc}.flex-row{flex-direction:row}.items-center{align-items:center}.justify-center{justify-content:center}.space-x-8>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-left:2rem;margin-left:calc(2rem*(1 - var(--tw-space-x-reverse)));margin-right:0;margin-right:calc(2rem*var(--tw-space-x-reverse))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.rounded{border-radius:.25rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.bg-black{--tw-bg-opacity:1;background-color:#000;background-color:rgb(0 0 0/var(--tw-bg-opacity))}.bg-gray-200{--tw-bg-opacity:1;background-color:#e5e7eb;background-color:rgb(229 231 235/var(--tw-bg-opacity))}.bg-gray-300{--tw-bg-opacity:1;background-color:#d1d5db;background-color:rgb(209 213 219/var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:#fff;background-color:rgb(255 255 255/var(--tw-bg-opacity))}.p-2{padding:.5rem}.p-4{padding:1rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-4{padding-left:1rem;padding-right:1rem}.pb-64{padding-bottom:16rem}.pb-8{padding-bottom:2rem}.pl-4{padding-left:1rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.text-gray-800{--tw-text-opacity:1;color:#1f2937;color:rgb(31 41 55/var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:#fff;color:rgb(255 255 255/var(--tw-text-opacity))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.grayscale{--tw-grayscale:grayscale(100%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) grayscale(100%) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}@media (min-width:640px){.sm\:prose{color:var(--tw-prose-body);max-width:65ch}.sm\:prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em;margin-top:1.25em}.sm\:prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-lead);font-size:1.25em;line-height:1.6;margin-bottom:1.2em;margin-top:1.2em}.sm\:prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-links);font-weight:500;text-decoration:underline}.sm\:prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-bold);font-weight:600}.sm\:prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal;margin-bottom:1.25em;margin-top:1.25em;padding-inline-start:1.625em}.sm\:prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.sm\:prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.sm\:prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.sm\:prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.sm\:prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.sm\:prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.sm\:prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.sm\:prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.sm\:prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal}.sm\:prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:disc;margin-bottom:1.25em;margin-top:1.25em;padding-inline-start:1.625em}.sm\:prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-counters);font-weight:400}.sm\:prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-bullets)}.sm\:prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.25em}.sm\:prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){border-color:var(--tw-prose-hr);border-top-width:1px;margin-bottom:3em;margin-top:3em}.sm\:prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){border-inline-start-color:var(--tw-prose-quote-borders);border-inline-start-width:.25rem;color:var(--tw-prose-quotes);font-style:italic;font-weight:500;margin-bottom:1.6em;margin-top:1.6em;padding-inline-start:1em;quotes:"\201C""\201D""\2018""\2019"}.sm\:prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:open-quote}.sm\:prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:close-quote}.sm\:prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-size:2.25em;font-weight:800;line-height:1.1111111;margin-bottom:.8888889em;margin-top:0}.sm\:prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:900}.sm\:prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-size:1.5em;font-weight:700;line-height:1.3333333;margin-bottom:1em;margin-top:2em}.sm\:prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:800}.sm\:prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-size:1.25em;font-weight:600;line-height:1.6;margin-bottom:.6em;margin-top:1.6em}.sm\:prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:700}.sm\:prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;line-height:1.5;margin-bottom:.5em;margin-top:1.5em}.sm\:prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-weight:700}.sm\:prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:2em;margin-top:2em}.sm\:prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){display:block;margin-bottom:2em;margin-top:2em}.sm\:prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:2em;margin-top:2em}.sm\:prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){border-radius:.3125rem;box-shadow:0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);color:var(--tw-prose-kbd);font-family:inherit;font-size:.875em;font-weight:500;padding-inline-end:.375em;padding-bottom:.1875em;padding-top:.1875em;padding-inline-start:.375em}.sm\:prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-code);font-size:.875em;font-weight:600}.sm\:prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:"`"}.sm\:prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:"`"}.sm\:prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.875em}.sm\:prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.9em}.sm\:prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.sm\:prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:var(--tw-prose-pre-bg);border-radius:.375rem;color:var(--tw-prose-pre-code);font-size:.875em;font-weight:400;line-height:1.7142857;margin-bottom:1.7142857em;margin-top:1.7142857em;overflow-x:auto;padding-inline-end:1.1428571em;padding-bottom:.8571429em;padding-top:.8571429em;padding-inline-start:1.1428571em}.sm\:prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:initial;border-radius:0;border-width:0;color:inherit;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;padding:0}.sm\:prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:none}.sm\:prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:none}.sm\:prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.875em;line-height:1.7142857;margin-bottom:2em;margin-top:2em;table-layout:auto;text-align:start;width:100%}.sm\:prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-color:var(--tw-prose-th-borders);border-bottom-width:1px}.sm\:prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em;vertical-align:bottom}.sm\:prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-color:var(--tw-prose-td-borders);border-bottom-width:1px}.sm\:prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:0}.sm\:prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:initial}.sm\:prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)){border-top-color:var(--tw-prose-th-borders);border-top-width:1px}.sm\:prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:top}.sm\:prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.sm\:prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-captions);font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.sm\:prose{--tw-prose-body:#374151;--tw-prose-headings:#111827;--tw-prose-lead:#4b5563;--tw-prose-links:#111827;--tw-prose-bold:#111827;--tw-prose-counters:#6b7280;--tw-prose-bullets:#d1d5db;--tw-prose-hr:#e5e7eb;--tw-prose-quotes:#111827;--tw-prose-quote-borders:#e5e7eb;--tw-prose-captions:#6b7280;--tw-prose-kbd:#111827;--tw-prose-kbd-shadows:17 24 39;--tw-prose-code:#111827;--tw-prose-pre-code:#e5e7eb;--tw-prose-pre-bg:#1f2937;--tw-prose-th-borders:#d1d5db;--tw-prose-td-borders:#e5e7eb;--tw-prose-invert-body:#d1d5db;--tw-prose-invert-headings:#fff;--tw-prose-invert-lead:#9ca3af;--tw-prose-invert-links:#fff;--tw-prose-invert-bold:#fff;--tw-prose-invert-counters:#9ca3af;--tw-prose-invert-bullets:#4b5563;--tw-prose-invert-hr:#374151;--tw-prose-invert-quotes:#f3f4f6;--tw-prose-invert-quote-borders:#374151;--tw-prose-invert-captions:#9ca3af;--tw-prose-invert-kbd:#fff;--tw-prose-invert-kbd-shadows:255 255 255;--tw-prose-invert-code:#fff;--tw-prose-invert-pre-code:#d1d5db;--tw-prose-invert-pre-bg:#00000080;--tw-prose-invert-th-borders:#4b5563;--tw-prose-invert-td-borders:#374151;font-size:1rem;line-height:1.75}.sm\:prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.sm\:prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.5em;margin-top:.5em}.sm\:prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.sm\:prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.sm\:prose :where(.sm\:prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.75em;margin-top:.75em}.sm\:prose :where(.sm\:prose>ul>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.sm\:prose :where(.sm\:prose>ul>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.sm\:prose :where(.sm\:prose>ol>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.sm\:prose :where(.sm\:prose>ol>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.sm\:prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.75em;margin-top:.75em}.sm\:prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em;margin-top:1.25em}.sm\:prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;padding-inline-start:1.625em}.sm\:prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.sm\:prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.sm\:prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.sm\:prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.sm\:prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.sm\:prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.sm\:prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-top:.5714286em;padding-inline-start:.5714286em}.sm\:prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.sm\:prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.sm\:prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:2em;margin-top:2em}.sm\:prose :where(.sm\:prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.sm\:prose :where(.sm\:prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}}@media (min-width:1024px){.lg\:prose-lg{font-size:1.125rem;line-height:1.7777778}.lg\:prose-lg :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.3333333em;margin-top:1.3333333em}.lg\:prose-lg :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:1.2222222em;line-height:1.4545455;margin-bottom:1.0909091em;margin-top:1.0909091em}.lg\:prose-lg :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.6666667em;margin-top:1.6666667em;padding-inline-start:1em}.lg\:prose-lg :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:2.6666667em;line-height:1;margin-bottom:.8333333em;margin-top:0}.lg\:prose-lg :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:1.6666667em;line-height:1.3333333;margin-bottom:1.0666667em;margin-top:1.8666667em}.lg\:prose-lg :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:1.3333333em;line-height:1.5;margin-bottom:.6666667em;margin-top:1.6666667em}.lg\:prose-lg :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){line-height:1.5555556;margin-bottom:.4444444em;margin-top:1.7777778em}.lg\:prose-lg :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7777778em;margin-top:1.7777778em}.lg\:prose-lg :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7777778em;margin-top:1.7777778em}.lg\:prose-lg :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.lg\:prose-lg :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7777778em;margin-top:1.7777778em}.lg\:prose-lg :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){border-radius:.3125rem;font-size:.8888889em;padding-inline-end:.4444444em;padding-bottom:.2222222em;padding-top:.2222222em;padding-inline-start:.4444444em}.lg\:prose-lg :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8888889em}.lg\:prose-lg :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8666667em}.lg\:prose-lg :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.875em}.lg\:prose-lg :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){border-radius:.375rem;font-size:.8888889em;line-height:1.75;margin-bottom:2em;margin-top:2em;padding-inline-end:1.5em;padding-bottom:1em;padding-top:1em;padding-inline-start:1.5em}.lg\:prose-lg :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.3333333em;margin-top:1.3333333em;padding-inline-start:1.5555556em}.lg\:prose-lg :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.3333333em;margin-top:1.3333333em;padding-inline-start:1.5555556em}.lg\:prose-lg :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.6666667em;margin-top:.6666667em}.lg\:prose-lg :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.4444444em}.lg\:prose-lg :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.4444444em}.lg\:prose-lg :where(.lg\:prose-lg>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.8888889em;margin-top:.8888889em}.lg\:prose-lg :where(.lg\:prose-lg>ul>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.3333333em}.lg\:prose-lg :where(.lg\:prose-lg>ul>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.3333333em}.lg\:prose-lg :where(.lg\:prose-lg>ol>li>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.3333333em}.lg\:prose-lg :where(.lg\:prose-lg>ol>li>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.3333333em}.lg\:prose-lg :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:.8888889em;margin-top:.8888889em}.lg\:prose-lg :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.3333333em;margin-top:1.3333333em}.lg\:prose-lg :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.3333333em}.lg\:prose-lg :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.6666667em;padding-inline-start:1.5555556em}.lg\:prose-lg :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:3.1111111em;margin-top:3.1111111em}.lg\:prose-lg :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.lg\:prose-lg :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.lg\:prose-lg :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.lg\:prose-lg :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.lg\:prose-lg :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8888889em;line-height:1.5}.lg\:prose-lg :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:.75em;padding-bottom:.75em;padding-inline-start:.75em}.lg\:prose-lg :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.lg\:prose-lg :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.lg\:prose-lg :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:.75em;padding-bottom:.75em;padding-top:.75em;padding-inline-start:.75em}.lg\:prose-lg :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.lg\:prose-lg :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.lg\:prose-lg :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.7777778em;margin-top:1.7777778em}.lg\:prose-lg :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0;margin-top:0}.lg\:prose-lg :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){font-size:.8888889em;line-height:1.5;margin-top:1em}.lg\:prose-lg :where(.lg\:prose-lg>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.lg\:prose-lg :where(.lg\:prose-lg>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}}@media (min-width:640px){.sm\:space-x-32>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-left:8rem;margin-left:calc(8rem*(1 - var(--tw-space-x-reverse)));margin-right:0;margin-right:calc(8rem*var(--tw-space-x-reverse))}}</style>
 <style>html{font-family:Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:16px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}*,:after,:before{box-sizing:border-box;margin:0}.button--green{border:1px solid #3b8070;border-radius:4px;color:#3b8070;display:inline-block;padding:10px 30px;text-decoration:none}.button--green:hover{background-color:#3b8070;color:#fff}.button--grey{border:1px solid #35495e;border-radius:4px;color:#35495e;display:inline-block;margin-left:15px;padding:10px 30px;text-decoration:none}.button--grey:hover{background-color:#35495e;color:#fff}</style>
-<link rel="modulepreload" as="script" crossorigin href="/compare-learn/_nuxt/dQ1Nz1Ku.js">
-<link rel="modulepreload" as="script" crossorigin href="/compare-learn/_nuxt/DmI1uTTB.js">
-<link rel="modulepreload" as="script" crossorigin href="/compare-learn/_nuxt/CD9Ri34Z.js">
-<link rel="modulepreload" as="script" crossorigin href="/compare-learn/_nuxt/B7f9nlsL.js">
-<link rel="modulepreload" as="script" crossorigin href="/compare-learn/_nuxt/qAHngTeV.js">
-<link rel="prefetch" as="script" crossorigin href="/compare-learn/_nuxt/Lr9h5lo-.js">
-<link rel="prefetch" as="script" crossorigin href="/compare-learn/_nuxt/8dGi3ubz.js">
-<link rel="prefetch" as="script" crossorigin href="/compare-learn/_nuxt/C2ckBuw_.js">
-<script type="module" src="/compare-learn/_nuxt/dQ1Nz1Ku.js" crossorigin></script>
-<script id="unhead:payload" type="application/json">{"title":"Compare Learn"}</script></head><body><div id="__nuxt"><div><div><div class="fixed w-40 h-full overflow-auto bg-white"><a class="p-2 text-white bg-black cursor-pointer" href="/">Compare &amp; Learn</a><ul class="p-4"><!--[--><!--]--></ul></div><div class="max-w-5xl px-4 pt-4 pb-64 mx-auto prose-sm prose"><div class="flex"><div class="w-full text-2xl font-bold text-center">React</div><div class="w-full text-2xl font-bold text-center">Vue</div></div><!--[--><!--]--></div></div></div></div><div id="teleports"></div><script type="application/json" id="__NUXT_DATA__" data-ssr="true" data-src="/compare-learn/ui-libraries/_payload.json?4bc8380b-aa7a-430c-ad18-bb84f846d9a5">[{"state":1,"once":3,"_errors":5,"serverRendered":7,"path":8,"prerenderedAt":9},["Reactive",2],{},["Reactive",4],["Set"],["Reactive",6],{},true,"/ui-libraries",1713263890586]</script>
-<script>window.__NUXT__={};window.__NUXT__.config={public:{mdc:{components:{prose:true,map:{p:"prose-p",a:"prose-a",blockquote:"prose-blockquote","code-inline":"prose-code-inline",code:"ProseCodeInline",em:"prose-em",h1:"prose-h1",h2:"prose-h2",h3:"prose-h3",h4:"prose-h4",h5:"prose-h5",h6:"prose-h6",hr:"prose-hr",img:"prose-img",ul:"prose-ul",ol:"prose-ol",li:"prose-li",strong:"prose-strong",table:"prose-table",thead:"prose-thead",tbody:"prose-tbody",td:"prose-td",th:"prose-th",tr:"prose-tr"}},headings:{anchorLinks:{h1:false,h2:true,h3:true,h4:true,h5:false,h6:false}}},content:{locales:[],defaultLocale:"",integrity:1713263880627,experimental:{stripQueryParameters:false,advanceQuery:false,clientDB:false},respectPathCase:false,api:{baseURL:"/api/_content"},navigation:{fields:[]},tags:{p:"prose-p",a:"prose-a",blockquote:"prose-blockquote","code-inline":"prose-code-inline",code:"ProseCodeInline",em:"prose-em",h1:"prose-h1",h2:"prose-h2",h3:"prose-h3",h4:"prose-h4",h5:"prose-h5",h6:"prose-h6",hr:"prose-hr",img:"prose-img",ul:"prose-ul",ol:"prose-ol",li:"prose-li",strong:"prose-strong",table:"prose-table",thead:"prose-thead",tbody:"prose-tbody",td:"prose-td",th:"prose-th",tr:"prose-tr"},highlight:false,wsUrl:"",documentDriven:false,host:"",trailingSlash:false,search:"",contentHead:true,anchorLinks:{depth:4,exclude:[1]}}},app:{baseURL:"/compare-learn/",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script></body></html>
+<style>pre code .line{display:block;min-height:1rem}</style>
+<link rel="stylesheet" href="/_nuxt/ProsePre.CchFRBtv.css">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/TEzaT4oR.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BhHwi_kV.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DyKwIjhg.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DP7fAO22.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/2WqBQmvv.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BD_kHU3K.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/gevRZrC7.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/lgy8vuao.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DGdYgqQ5.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BsYmvPZw.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DOyQPN93.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DXQbueuP.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CB0ScLj7.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BkYJtHEz.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CaUCtPM_.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CSAUYlr8.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/LdttySMo.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BjDW-xbe.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/C2kycbIc.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DOgeSqpQ.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/AYclx9Zp.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DwDILqtX.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/GrbDd09j.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/Cf0ddDV3.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CzgKXi-c.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BPDaUQxg.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BvD26nTF.js">
+<script type="module" src="/_nuxt/TEzaT4oR.js" crossorigin></script></head><body><div id="__nuxt"><div><div><div class="fixed w-40 h-full overflow-auto bg-white"><a class="p-2 text-white bg-black cursor-pointer" href="/">Compare &amp; Learn</a><ul class="p-4"><!--[--><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#appendingtodom" class="router-link-active router-link-exact-active">appendingtodom</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#binding-method" class="router-link-active router-link-exact-active">binding-method</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#child-interact-parent" class="router-link-active router-link-exact-active">child-interact-parent</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#component" class="router-link-active router-link-exact-active">component</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#composition" class="router-link-active router-link-exact-active">composition</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#controlled-components" class="router-link-active router-link-exact-active">controlled-components</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#hooks-flow" class="router-link-active router-link-exact-active">hooks-flow</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#if" class="router-link-active router-link-exact-active">if</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#jsx" class="router-link-active router-link-exact-active">jsx</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#life-cycle" class="router-link-active router-link-exact-active">life-cycle</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#props" class="router-link-active router-link-exact-active">props</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#redux" class="router-link-active router-link-exact-active">redux</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#ref" class="router-link-active router-link-exact-active">ref</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#state" class="router-link-active router-link-exact-active">state</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#usecallback" class="router-link-active router-link-exact-active">usecallback</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#useeffect" class="router-link-active router-link-exact-active">useeffect</a></li><li class="text-xs list-disc"><a aria-current="page" href="/ui-libraries#usereducer" class="router-link-active router-link-exact-active">usereducer</a></li><!--]--></ul></div><div class="max-w-5xl px-4 pt-4 pb-64 mx-auto prose-sm prose"><div class="flex"><div class="w-full text-2xl font-bold text-center">Vue</div><div class="w-full text-2xl font-bold text-center">React</div></div><!--[--><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h2 id="appending-to-dom"><a href="#appending-to-dom"><!--[-->Appending to DOM<!--]--></a></h2><!--[--><pre class="language-js" style=""><!--[--><code>ReactDOM.render(JSX or &lt;component/&gt;, elementToMountOn)
+</code><!--]--></pre><!--]--></div><!--]--><!--[--><div id="appendingtodom" class="flex-1 overflow-hidden"><h2 id="appending-to-dom"><a href="#appending-to-dom"><!--[-->Appending to DOM<!--]--></a></h2><!--[--><pre class="language-js" style=""><!--[--><code>ReactDOM.render(JSX or &lt;component/&gt;, elementToMountOn)
+</code><!--]--></pre><!--]--></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="binding-methods"><a href="#binding-methods"><!--[-->binding methods<!--]--></a></h3><!--[--><pre class="language-js" style=""><!--[--><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: &quot;Hello&quot;
+    };
+    // Change code below this line
+    this.handleClick = this.handleClick.bind(this)
+    // Change code above this line
+  }
+  handleClick() {
+    this.setState({
+      text: &quot;You clicked!&quot;
+    });
+  }
+  render() {
+    return (
+      &lt;div&gt;
+        { /* Change code below this line */ }
+        &lt;button onClick={this.handleClick}&gt;Click Me&lt;/button&gt;
+        { /* Change code above this line */ }
+        &lt;h1&gt;{this.state.text}&lt;/h1&gt;
+      &lt;/div&gt;
+    );
+  }
+};
+</code><!--]--></pre><!--]--></div><!--]--><!--[--><div id="binding-method" class="flex-1 overflow-hidden"><h3 id="binding-methods"><a href="#binding-methods"><!--[-->binding methods<!--]--></a></h3><!--[--><pre class="language-js" style=""><!--[--><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: &quot;Hello&quot;
+    };
+    // Change code below this line
+    this.handleClick = this.handleClick.bind(this)
+    // Change code above this line
+  }
+  handleClick() {
+    this.setState({
+      text: &quot;You clicked!&quot;
+    });
+  }
+  render() {
+    return (
+      &lt;div&gt;
+        { /* Change code below this line */ }
+        &lt;button onClick={this.handleClick}&gt;Click Me&lt;/button&gt;
+        { /* Change code above this line */ }
+        &lt;h1&gt;{this.state.text}&lt;/h1&gt;
+      &lt;/div&gt;
+    );
+  }
+};
+</code><!--]--></pre><!--]--></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="child-interact-parent"><a href="#child-interact-parent"><!--[-->child interact parent<!--]--></a></h3><ul><!--[--><li><!--[-->pass methods to child just like prop<!--]--></li><li><!--[-->callback is passed<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: &#39;&#39;
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      inputValue: event.target.value
+    });
+  }
+  render() {
+    return (
+       &lt;div&gt;
+        { /* Change code below this line */ }
+        &lt;GetInput input={this.state.inputValue} handleChange={this.handleChange}/&gt;
+        &lt;RenderInput input={this.state.inputValue}/&gt;
+        { /* Change code above this line */ }
+       &lt;/div&gt;
+    );
+  }
+};
+
+class GetInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h3&gt;Get Input:&lt;/h3&gt;
+        &lt;input
+          value={this.props.input}
+          onChange={this.props.handleChange}/&gt;
+      &lt;/div&gt;
+    );
+  }
+};
+</code><!--]--></pre><!--]--></div><!--]--><!--[--><div id="child-interact-parent" class="flex-1 overflow-hidden"><h3 id="child-interact-parent"><a href="#child-interact-parent"><!--[-->child interact parent<!--]--></a></h3><ul><!--[--><li><!--[-->pass methods to child just like prop<!--]--></li><li><!--[-->callback is passed<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: &#39;&#39;
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      inputValue: event.target.value
+    });
+  }
+  render() {
+    return (
+       &lt;div&gt;
+        { /* Change code below this line */ }
+        &lt;GetInput input={this.state.inputValue} handleChange={this.handleChange}/&gt;
+        &lt;RenderInput input={this.state.inputValue}/&gt;
+        { /* Change code above this line */ }
+       &lt;/div&gt;
+    );
+  }
+};
+
+class GetInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h3&gt;Get Input:&lt;/h3&gt;
+        &lt;input
+          value={this.props.input}
+          onChange={this.props.handleChange}/&gt;
+      &lt;/div&gt;
+    );
+  }
+};
+</code><!--]--></pre><!--]--></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h2 id="component"><a href="#component"><!--[-->Component<!--]--></a></h2><ul><!--[--><li><!--[-->core of react<!--]--></li><li><!--[-->everything in react is component<!--]--></li><li><!--[-->2 ways to create
+<ol><!--[--><li><!--[-->Javascipt Function<!--]--></li><li><!--[-->ES6 classes<!--]--></li><!--]--></ol><!--]--></li><!--]--></ul><h3 id="using-js-function"><a href="#using-js-function"><!--[-->Using JS function<!--]--></a></h3><ul><!--[--><li><!--[-->creates stateless functional component<!--]--></li><!--]--></ul><ol><!--[--><li><!--[-->js function that returns JSX or null<!--]--></li><li><!--[-->function name should begin with capital letter<!--]--></li><!--]--></ol><!--[--><pre class="language-jsx" style=""><!--[--><code>const DemoComponent = function(){
+    return (
+        &lt;div className=&quot;customClass&quot;/&gt;
+    )
+}
+</code><!--]--></pre><!--]--><h3 id="using-class-syntax"><a href="#using-class-syntax"><!--[-->Using Class syntax<!--]--></a></h3><ol><!--[--><li><!--[-->extend React.component<!--]--></li><li><!--[-->make a constructor<!--]--></li><li><!--[-->make a render method<!--]--></li><!--]--></ol><!--[--><pre class="language-jsx" style=""><!--[--><code>class Kitten extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            &lt;h1&gt;Hi!&lt;/h1&gt;
+        )
+    }
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->Kitten extends React.Component class, so now it has many features of react.
+<ul><!--[--><li><!--[-->local state, lifecycle hooks<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->stateless functional component
+<ul><!--[--><li><!--[-->function that accepts props, returns JSX<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->stateless component
+<ul><!--[--><li><!--[-->class that extends React.component, but does not uses an internal state<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->stateful component
+<ul><!--[--><li><!--[-->class component that maintains own internal state, referred simply as react components<!--]--></li><li><!--[-->common pattern: reduce stateful components &amp; create stateless components
+<ul><!--[--><li><!--[-->helps contain state management to specific area of app<!--]--></li><li><!--[-->improves dev &amp; maintenance as it makes easier to follow changes to state<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--><!--[--><div id="component" class="flex-1 overflow-hidden"><h2 id="component"><a href="#component"><!--[-->Component<!--]--></a></h2><ul><!--[--><li><!--[-->core of react<!--]--></li><li><!--[-->everything in react is component<!--]--></li><li><!--[-->2 ways to create
+<ol><!--[--><li><!--[-->Javascipt Function<!--]--></li><li><!--[-->ES6 classes<!--]--></li><!--]--></ol><!--]--></li><!--]--></ul><h3 id="using-js-function"><a href="#using-js-function"><!--[-->Using JS function<!--]--></a></h3><ul><!--[--><li><!--[-->creates stateless functional component<!--]--></li><!--]--></ul><ol><!--[--><li><!--[-->js function that returns JSX or null<!--]--></li><li><!--[-->function name should begin with capital letter<!--]--></li><!--]--></ol><!--[--><pre class="language-jsx" style=""><!--[--><code>const DemoComponent = function(){
+    return (
+        &lt;div className=&quot;customClass&quot;/&gt;
+    )
+}
+</code><!--]--></pre><!--]--><h3 id="using-class-syntax"><a href="#using-class-syntax"><!--[-->Using Class syntax<!--]--></a></h3><ol><!--[--><li><!--[-->extend React.component<!--]--></li><li><!--[-->make a constructor<!--]--></li><li><!--[-->make a render method<!--]--></li><!--]--></ol><!--[--><pre class="language-jsx" style=""><!--[--><code>class Kitten extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            &lt;h1&gt;Hi!&lt;/h1&gt;
+        )
+    }
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->Kitten extends React.Component class, so now it has many features of react.
+<ul><!--[--><li><!--[-->local state, lifecycle hooks<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->stateless functional component
+<ul><!--[--><li><!--[-->function that accepts props, returns JSX<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->stateless component
+<ul><!--[--><li><!--[-->class that extends React.component, but does not uses an internal state<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->stateful component
+<ul><!--[--><li><!--[-->class component that maintains own internal state, referred simply as react components<!--]--></li><li><!--[-->common pattern: reduce stateful components &amp; create stateless components
+<ul><!--[--><li><!--[-->helps contain state management to specific area of app<!--]--></li><li><!--[-->improves dev &amp; maintenance as it makes easier to follow changes to state<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="how-to-compose-complex-component-using-multiple-components"><a href="#how-to-compose-complex-component-using-multiple-components"><!--[-->how to compose complex component using multiple components<!--]--></a></h3><ul><!--[--><li><!--[-->You can render JSX elements, stateless functional components, and ES6 class components within other components.<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const Fruits = () =&gt;{
+    return (
+        &lt;div&gt;
+            Fruits
+        &lt;/div&gt;
+    )
+}
+const Vegetables = () =&gt;{
+    return (
+        &lt;div&gt;
+        Vegetables
+        &lt;/div&gt;
+    )
+}
+class Foods extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;Fruits/&gt;
+                &lt;Vegetables/&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+</code><!--]--></pre><!--]--></div><!--]--><!--[--><div id="composition" class="flex-1 overflow-hidden"><h3 id="how-to-compose-complex-component-using-multiple-components"><a href="#how-to-compose-complex-component-using-multiple-components"><!--[-->how to compose complex component using multiple components<!--]--></a></h3><ul><!--[--><li><!--[-->You can render JSX elements, stateless functional components, and ES6 class components within other components.<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const Fruits = () =&gt;{
+    return (
+        &lt;div&gt;
+            Fruits
+        &lt;/div&gt;
+    )
+}
+const Vegetables = () =&gt;{
+    return (
+        &lt;div&gt;
+        Vegetables
+        &lt;/div&gt;
+    )
+}
+class Foods extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;Fruits/&gt;
+                &lt;Vegetables/&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+</code><!--]--></pre><!--]--></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><p>Document is empty, overwrite this content with #empty slot in &lt;ContentDoc&gt;.</p><!--]--><!--[--><p>Document is empty, overwrite this content with #empty slot in &lt;ContentDoc&gt;.</p><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="hooks-lifecycle"><a href="#hooks-lifecycle"><!--[-->Hooks Lifecycle<!--]--></a></h3><p><!--[-->Mounting:<!--]--></p><ol><!--[--><li><!--[-->useState() -&gt; lazy initializers<!--]--></li><li><!--[-->render: rest of the function code<!--]--></li><li><!--[-->update DOM<!--]--></li><li><!--[-->run layout effects<!--]--></li><li><!--[-->Browser paints screen<!--]--></li><li><!--[-->run effects<!--]--></li><!--]--></ol><p><!--[-->Updating:<!--]--></p><ol><!--[--><li><!--[-->render: rest of the function code<!--]--></li><li><!--[-->update DOM<!--]--></li><li><!--[-->cleanup layout effects<!--]--></li><li><!--[-->run layout effects<!--]--></li><li><!--[-->Browser paints screen<!--]--></li><li><!--[-->clean up side effects of prev render<!--]--></li><li><!--[-->run effects<!--]--></li><!--]--></ol><p><!--[-->Unmount:<!--]--></p><ol start="3"><!--[--><li><!--[-->cleanup layout effects<!--]--></li><li><!--[-->clean up side effects of prev render<!--]--></li><!--]--></ol></div><!--]--><!--[--><div id="hooks-flow" class="flex-1 overflow-hidden"><h3 id="hooks-lifecycle"><a href="#hooks-lifecycle"><!--[-->Hooks Lifecycle<!--]--></a></h3><p><!--[-->Mounting:<!--]--></p><ol><!--[--><li><!--[-->useState() -&gt; lazy initializers<!--]--></li><li><!--[-->render: rest of the function code<!--]--></li><li><!--[-->update DOM<!--]--></li><li><!--[-->run layout effects<!--]--></li><li><!--[-->Browser paints screen<!--]--></li><li><!--[-->run effects<!--]--></li><!--]--></ol><p><!--[-->Updating:<!--]--></p><ol><!--[--><li><!--[-->render: rest of the function code<!--]--></li><li><!--[-->update DOM<!--]--></li><li><!--[-->cleanup layout effects<!--]--></li><li><!--[-->run layout effects<!--]--></li><li><!--[-->Browser paints screen<!--]--></li><li><!--[-->clean up side effects of prev render<!--]--></li><li><!--[-->run effects<!--]--></li><!--]--></ol><p><!--[-->Unmount:<!--]--></p><ol start="3"><!--[--><li><!--[-->cleanup layout effects<!--]--></li><li><!--[-->clean up side effects of prev render<!--]--></li><!--]--></ol></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><p>Document is empty, overwrite this content with #empty slot in &lt;ContentDoc&gt;.</p><!--]--><!--[--><p>Document is empty, overwrite this content with #empty slot in &lt;ContentDoc&gt;.</p><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="jsx"><a href="#jsx"><!--[-->jsx<!--]--></a></h3><ul><!--[--><li><!--[-->benefit: full programmatic power of js in html<!--]--></li><li><!--[-->not valid js, hence must be converted to js. done using babel transpiler<!--]--></li><li><!--[-->simply include js code within round brace<!--]--></li><li><!--[-->must return a single element<!--]--></li><li><!--[-->tool to write readable html within JS<!--]--></li><!--]--></ul><!--[--><pre class="language-jsx" style=""><!--[--><code>const JSX = (
+    &lt;div&gt;
+        {/* some comment here */}
+        &lt;h1 className=&quot;hello&quot;&gt;Hello&lt;/h1&gt;
+    &lt;/div&gt;
+)
+//Render JSX
+ReactDOM.render(JSX, document.getElementById(&#39;challenge-node&#39;))
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->class is reserved keyword in JS, therefore JSX uses <code class=""><!--[-->className<!--]--></code> to define class in html
+<ul><!--[--><li><!--[-->naming convention for all HTML attributes and event references in JSX become camelCase. For example, a click event in JSX is <code class=""><!--[-->onClick<!--]--></code>, instead of <code class=""><!--[-->onclick<!--]--></code><!--]--></li><!--]--></ul><!--]--></li><li><!--[-->has concept of self-closing tag for all elements
+<ul><!--[--><li><!--[-->ex: <code class=""><!--[-->&lt;div/&gt;<!--]--></code> = <code class=""><!--[-->&lt;div&gt;&lt;/div&gt;<!--]--></code><!--]--></li><li><!--[-->this is useful in adding react component<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--><!--[--><div id="jsx" class="flex-1 overflow-hidden"><h3 id="jsx"><a href="#jsx"><!--[-->jsx<!--]--></a></h3><ul><!--[--><li><!--[-->benefit: full programmatic power of js in html<!--]--></li><li><!--[-->not valid js, hence must be converted to js. done using babel transpiler<!--]--></li><li><!--[-->simply include js code within round brace<!--]--></li><li><!--[-->must return a single element<!--]--></li><li><!--[-->tool to write readable html within JS<!--]--></li><!--]--></ul><!--[--><pre class="language-jsx" style=""><!--[--><code>const JSX = (
+    &lt;div&gt;
+        {/* some comment here */}
+        &lt;h1 className=&quot;hello&quot;&gt;Hello&lt;/h1&gt;
+    &lt;/div&gt;
+)
+//Render JSX
+ReactDOM.render(JSX, document.getElementById(&#39;challenge-node&#39;))
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->class is reserved keyword in JS, therefore JSX uses <code class=""><!--[-->className<!--]--></code> to define class in html
+<ul><!--[--><li><!--[-->naming convention for all HTML attributes and event references in JSX become camelCase. For example, a click event in JSX is <code class=""><!--[-->onClick<!--]--></code>, instead of <code class=""><!--[-->onclick<!--]--></code><!--]--></li><!--]--></ul><!--]--></li><li><!--[-->has concept of self-closing tag for all elements
+<ul><!--[--><li><!--[-->ex: <code class=""><!--[-->&lt;div/&gt;<!--]--></code> = <code class=""><!--[-->&lt;div&gt;&lt;/div&gt;<!--]--></code><!--]--></li><li><!--[-->this is useful in adding react component<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><ul><!--[--><li><!--[-->Life Cycle
+<ul><!--[--><li><!--[-->componentDidUpdate - going to be depreceated in 17<!--]--></li><li><!--[-->componentDidMount
+<ul><!--[--><li><!--[-->call API<!--]--></li><li><!--[-->attach event listener<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->componentWillUnmount<!--]--></li><li><!--[-->shouldComponentUpdate(nextProps, nextState)<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--><!--[--><div id="life-cycle" class="flex-1 overflow-hidden"><ul><!--[--><li><!--[-->Life Cycle
+<ul><!--[--><li><!--[-->componentDidUpdate - going to be depreceated in 17<!--]--></li><li><!--[-->componentDidMount
+<ul><!--[--><li><!--[-->call API<!--]--></li><li><!--[-->attach event listener<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->componentWillUnmount<!--]--></li><li><!--[-->shouldComponentUpdate(nextProps, nextState)<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="using-props"><a href="#using-props"><!--[-->using props<!--]--></a></h3><!--[--><pre class="language-js" style=""><!--[--><code>const List = () = {
+    return (
+        &lt;p&gt;{props.tasks.join(&#39;, &#39;)}&lt;/p&gt;
+    )
+}
+
+&lt;List tasks={[&quot;learn react&quot;,&quot;learn state&quot;]}&gt;
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->giving default value
+<!--[--><pre class="language-js" style=""><!--[--><code>    ShoppingCart.defaultProps = {
+        items:0
+    }
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->giving propTypes
+<!--[--><pre class="language-js" style=""><!--[--><code>    ShoppingCart.propTypes = {
+        items: PropTypes.func.isRequired
+    }
+    // items should be of type function
+    // items is a required property
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->there are many types available apart from primitive types<!--]--></li><li><!--[-->function -&gt; func, boolean -&gt; bool<!--]--></li><li><!--[-->PropTypes is imported independently from React, like this: import PropTypes from &#39;prop-types&#39;;<!--]--></li><li><!--[-->same way for class &amp; functional component<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->in Class component, it is accessed using this.props.data<!--]--></li><li><!--[-->allows unidirectional data flow<!--]--></li><!--]--></ul></div><!--]--><!--[--><div id="props" class="flex-1 overflow-hidden"><h3 id="using-props"><a href="#using-props"><!--[-->using props<!--]--></a></h3><!--[--><pre class="language-js" style=""><!--[--><code>const List = () = {
+    return (
+        &lt;p&gt;{props.tasks.join(&#39;, &#39;)}&lt;/p&gt;
+    )
+}
+
+&lt;List tasks={[&quot;learn react&quot;,&quot;learn state&quot;]}&gt;
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->giving default value
+<!--[--><pre class="language-js" style=""><!--[--><code>    ShoppingCart.defaultProps = {
+        items:0
+    }
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->giving propTypes
+<!--[--><pre class="language-js" style=""><!--[--><code>    ShoppingCart.propTypes = {
+        items: PropTypes.func.isRequired
+    }
+    // items should be of type function
+    // items is a required property
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->there are many types available apart from primitive types<!--]--></li><li><!--[-->function -&gt; func, boolean -&gt; bool<!--]--></li><li><!--[-->PropTypes is imported independently from React, like this: import PropTypes from &#39;prop-types&#39;;<!--]--></li><li><!--[-->same way for class &amp; functional component<!--]--></li><!--]--></ul><!--]--></li><li><!--[-->in Class component, it is accessed using this.props.data<!--]--></li><li><!--[-->allows unidirectional data flow<!--]--></li><!--]--></ul></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h2 id="redux"><a href="#redux"><!--[-->Redux<!--]--></a></h2><ul><!--[--><li><!--[-->Predictable state container for JS apps<!--]--></li><li><!--[-->can be used with any UI library<!--]--></li><!--]--></ul><h3 id="async"><a href="#async"><!--[-->Async<!--]--></a></h3><p><!--[-->Redux Thunk middleware<!--]--></p><h3 id="basic"><a href="#basic"><!--[-->Basic<!--]--></a></h3><ol><!--[--><li><!--[-->create redux store<!--[--><pre class="language-js" style=""><!--[--><code>const reducer = (state = 5) =&gt; state
+const store = Redux.createStore(reducer)
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->get current state from store<!--[--><pre class="language-js" style=""><!--[--><code>store.getState()
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->Define Action, change state -&gt; done by dispatching action<ul><!--[--><li><!--[-->action: simple js obj, containing info about event that has just occured<!--]--></li><li><!--[-->sometimes carries data<!--]--></li><li><!--[-->must have type property<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const action = {
+  type: &#39;LOGIN&#39;,
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->Define action creator<ul><!--[--><li><!--[-->simple js function that returns an action<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const actionCreator = () =&gt; {
+  return action
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->Dispatch action to store<!--[--><pre class="language-js" style=""><!--[--><code>store.dispatch(action)
+store.dispatch(actionCreator)
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->reducer<ul><!--[--><li><!--[-->how to respond to an action<!--]--></li><li><!--[-->(state, action) =&gt; state<!--]--></li><li><!--[-->no side effect, no api call<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const authReducer = (state = defaultState, action) =&gt; {
+  switch (action.type) {
+    case &#39;LOGIN&#39;:
+      return {
+        authenticated: true,
+      }
+    default:
+      return state
+  }
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->subscribe - called when action are dispatched against store<!--[--><pre class="language-js" style=""><!--[--><code>store.subscribe(function () {
+  count += 1
+})
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->composing reducers<ul><!--[--><li><!--[-->instead of having multiple state, have multiple reducers<!--]--></li><li><!--[-->combineReducers
+<ul><!--[--><li><!--[-->simple object<!--]--></li><li><!--[-->key are name for associated piece of state<!--]--></li><li><!--[-->write reducer for each piece of application state<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const rootReducer = Redux.combineReducers({
+  auth: authReducer,
+  count: counterReducer,
+})
+const store = Redux.createStore(rootReducer)
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->handle async operation<ul><!--[--><li><!--[-->Redux Thunk middleware<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const handleAsync = () =&gt; {
+  return function (dispatch) {
+    // Dispatch request action here
+    dispatch(requestingData())
+    setTimeout(function () {
+      let data = {
+        users: [&#39;Jeff&#39;, &#39;William&#39;, &#39;Alice&#39;],
+      }
+      // Dispatch received data action here
+      dispatch(receivedData(data))
+    }, 2500)
+  }
+}
+const store = Redux.createStore(
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
+)
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->declare async action<!--]--></li><li><!--[-->takes dispatch as arg<!--]--></li><li><!--[-->call after operation finishes<!--]--></li><!--]--></ul><!--]--></li><!--]--></ol></div><!--]--><!--[--><div id="redux" class="flex-1 overflow-hidden"><h2 id="redux"><a href="#redux"><!--[-->Redux<!--]--></a></h2><ul><!--[--><li><!--[-->Predictable state container for JS apps<!--]--></li><li><!--[-->can be used with any UI library<!--]--></li><!--]--></ul><h3 id="async"><a href="#async"><!--[-->Async<!--]--></a></h3><p><!--[-->Redux Thunk middleware<!--]--></p><h3 id="basic"><a href="#basic"><!--[-->Basic<!--]--></a></h3><ol><!--[--><li><!--[-->create redux store<!--[--><pre class="language-js" style=""><!--[--><code>const reducer = (state = 5) =&gt; state
+const store = Redux.createStore(reducer)
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->get current state from store<!--[--><pre class="language-js" style=""><!--[--><code>store.getState()
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->Define Action, change state -&gt; done by dispatching action<ul><!--[--><li><!--[-->action: simple js obj, containing info about event that has just occured<!--]--></li><li><!--[-->sometimes carries data<!--]--></li><li><!--[-->must have type property<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const action = {
+  type: &#39;LOGIN&#39;,
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->Define action creator<ul><!--[--><li><!--[-->simple js function that returns an action<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const actionCreator = () =&gt; {
+  return action
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->Dispatch action to store<!--[--><pre class="language-js" style=""><!--[--><code>store.dispatch(action)
+store.dispatch(actionCreator)
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->reducer<ul><!--[--><li><!--[-->how to respond to an action<!--]--></li><li><!--[-->(state, action) =&gt; state<!--]--></li><li><!--[-->no side effect, no api call<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const authReducer = (state = defaultState, action) =&gt; {
+  switch (action.type) {
+    case &#39;LOGIN&#39;:
+      return {
+        authenticated: true,
+      }
+    default:
+      return state
+  }
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->subscribe - called when action are dispatched against store<!--[--><pre class="language-js" style=""><!--[--><code>store.subscribe(function () {
+  count += 1
+})
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->composing reducers<ul><!--[--><li><!--[-->instead of having multiple state, have multiple reducers<!--]--></li><li><!--[-->combineReducers
+<ul><!--[--><li><!--[-->simple object<!--]--></li><li><!--[-->key are name for associated piece of state<!--]--></li><li><!--[-->write reducer for each piece of application state<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const rootReducer = Redux.combineReducers({
+  auth: authReducer,
+  count: counterReducer,
+})
+const store = Redux.createStore(rootReducer)
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->handle async operation<ul><!--[--><li><!--[-->Redux Thunk middleware<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const handleAsync = () =&gt; {
+  return function (dispatch) {
+    // Dispatch request action here
+    dispatch(requestingData())
+    setTimeout(function () {
+      let data = {
+        users: [&#39;Jeff&#39;, &#39;William&#39;, &#39;Alice&#39;],
+      }
+      // Dispatch received data action here
+      dispatch(receivedData(data))
+    }, 2500)
+  }
+}
+const store = Redux.createStore(
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
+)
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->declare async action<!--]--></li><li><!--[-->takes dispatch as arg<!--]--></li><li><!--[-->call after operation finishes<!--]--></li><!--]--></ul><!--]--></li><!--]--></ol></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="ref-createref-useref"><a href="#ref-createref-useref"><!--[-->ref, createRef, useRef<!--]--></a></h3><p><!--[--><code class=""><!--[-->useRef()<!--]--></code> is basically <code class=""><!--[-->useState(React.createRef())[0]<!--]--></code><!--]--></p></div><!--]--><!--[--><div id="ref" class="flex-1 overflow-hidden"><h3 id="ref-createref-useref"><a href="#ref-createref-useref"><!--[-->ref, createRef, useRef<!--]--></a></h3><p><!--[--><code class=""><!--[-->useRef()<!--]--></code> is basically <code class=""><!--[-->useState(React.createRef())[0]<!--]--></code><!--]--></p></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="usestate"><a href="#usestate"><!--[-->useState<!--]--></a></h3><!--[--><pre class="language-js" style=""><!--[--><code>const [value, setValue] = useState(initialValue)
+</code><!--]--></pre><!--]--><h4 id="things-to-keep-in-mind"><a href="#things-to-keep-in-mind"><!--[-->Things to keep in mind:<!--]--></a></h4><ul><!--[--><li><!--[-->if initialValue is a computation, make it function, ie
+instead of this<!--[--><pre class="language-js" style=""><!--[--><code>const [] = useState(localStorage.getItem(&#39;name&#39;) || &#39;&#39;)
+</code><!--]--></pre><!--]--><br>do this<!--[--><pre class="language-js" style=""><!--[--><code>const [] = useState(() =&gt; localStorage.getItem(&#39;name&#39;) || &#39;&#39;)
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->useState ignores the initialValue after first render<!--]--></li><li><!--[-->also called Lazy state initialization<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><h4 id="use-old-value"><a href="#use-old-value"><!--[-->Use old value<!--]--></a></h4><!--[--><pre class="language-js" style=""><!--[--><code>useEffect(() =&gt; {
+  setCount((oldValue) =&gt; (oldValue += 1))
+})
+</code><!--]--></pre><!--]--></div><!--]--><!--[--><div id="state" class="flex-1 overflow-hidden"><h3 id="usestate"><a href="#usestate"><!--[-->useState<!--]--></a></h3><!--[--><pre class="language-js" style=""><!--[--><code>const [value, setValue] = useState(initialValue)
+</code><!--]--></pre><!--]--><h4 id="things-to-keep-in-mind"><a href="#things-to-keep-in-mind"><!--[-->Things to keep in mind:<!--]--></a></h4><ul><!--[--><li><!--[-->if initialValue is a computation, make it function, ie
+instead of this<!--[--><pre class="language-js" style=""><!--[--><code>const [] = useState(localStorage.getItem(&#39;name&#39;) || &#39;&#39;)
+</code><!--]--></pre><!--]--><br>do this<!--[--><pre class="language-js" style=""><!--[--><code>const [] = useState(() =&gt; localStorage.getItem(&#39;name&#39;) || &#39;&#39;)
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->useState ignores the initialValue after first render<!--]--></li><li><!--[-->also called Lazy state initialization<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><h4 id="use-old-value"><a href="#use-old-value"><!--[-->Use old value<!--]--></a></h4><!--[--><pre class="language-js" style=""><!--[--><code>useEffect(() =&gt; {
+  setCount((oldValue) =&gt; (oldValue += 1))
+})
+</code><!--]--></pre><!--]--></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="usecallback"><a href="#usecallback"><!--[-->useCallback<!--]--></a></h3><ul><!--[--><li><!--[-->used when memoization is involved<!--]--></li><li><!--[-->memoization
+<ul><!--[--><li><!--[-->caching is a form of memoization<!--]--></li><li><!--[-->referential equality<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--><!--[--><div id="usecallback" class="flex-1 overflow-hidden"><h3 id="usecallback"><a href="#usecallback"><!--[-->useCallback<!--]--></a></h3><ul><!--[--><li><!--[-->used when memoization is involved<!--]--></li><li><!--[-->memoization
+<ul><!--[--><li><!--[-->caching is a form of memoization<!--]--></li><li><!--[-->referential equality<!--]--></li><!--]--></ul><!--]--></li><!--]--></ul></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="useeffect"><a href="#useeffect"><!--[-->useEffect<!--]--></a></h3><ul><!--[--><li><!--[-->synchronize state of the world with state of my app<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>useEffect(callback, dependencyArray)
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->custom hook: a function that uses hooks<!--]--></li><li><!--[-->to give hint to eslint system, custom hook should start with <code class=""><!--[-->use<!--]--></code>, just a convention to tell ecosystem that it is custom hook<!--[--><pre class="language-js" style=""><!--[--><code>function useLocalState(key, defaultValue) {
+  const [state, setState] = useState(() =&gt; {
+    return localStorage.getItem(key) || defaultValue
+  })
+  useEffect(() =&gt; {
+    localStorage.setItem(key, state)
+  }, [key, state])
+  return [state, setState]
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->as a good practice, always serialize/deserialize data before reading/writing to localStorage<!--[--><pre class="language-js" style=""><!--[--><code>const [state, setState] = useState(() =&gt; {
+  const value = localStorage.getItem(key)
+  if (value) {
+    return JSON.parse(value)
+  }
+  return defaultValue
+})
+
+useEffect(() =&gt; {
+  localStorage.setItem(key, JSON.stringify(state))
+}, [key, state])
+</code><!--]--></pre><!--]--><!--]--></li><!--]--></ul></div><!--]--><!--[--><div id="useeffect" class="flex-1 overflow-hidden"><h3 id="useeffect"><a href="#useeffect"><!--[-->useEffect<!--]--></a></h3><ul><!--[--><li><!--[-->synchronize state of the world with state of my app<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>useEffect(callback, dependencyArray)
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->custom hook: a function that uses hooks<!--]--></li><li><!--[-->to give hint to eslint system, custom hook should start with <code class=""><!--[-->use<!--]--></code>, just a convention to tell ecosystem that it is custom hook<!--[--><pre class="language-js" style=""><!--[--><code>function useLocalState(key, defaultValue) {
+  const [state, setState] = useState(() =&gt; {
+    return localStorage.getItem(key) || defaultValue
+  })
+  useEffect(() =&gt; {
+    localStorage.setItem(key, state)
+  }, [key, state])
+  return [state, setState]
+}
+</code><!--]--></pre><!--]--><!--]--></li><li><!--[-->as a good practice, always serialize/deserialize data before reading/writing to localStorage<!--[--><pre class="language-js" style=""><!--[--><code>const [state, setState] = useState(() =&gt; {
+  const value = localStorage.getItem(key)
+  if (value) {
+    return JSON.parse(value)
+  }
+  return defaultValue
+})
+
+useEffect(() =&gt; {
+  localStorage.setItem(key, JSON.stringify(state))
+}, [key, state])
+</code><!--]--></pre><!--]--><!--]--></li><!--]--></ul></div><!--]--></div></div><div class="pb-8 border-b"><div class="flex flex-row space-x-8 sm:space-x-32"><!--[--><div class="flex-1 overflow-hidden"><h3 id="usereducer"><a href="#usereducer"><!--[-->useReducer<!--]--></a></h3><ul><!--[--><li><!--[-->sometimes you want to separate the state logic from the components that make the state changes.<!--]--></li><li><!--[-->if you have multiple elements of state that typically change together, then having an object that contains those elements of state can be quite helpful.<!--]--></li><li><!--[-->as useState<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const countReducer = (state, newState) =&gt; newState
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [count, setCount] = React.useReducer(countReducer, initialCount)
+  const increment = () =&gt; setCount(count + step)
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->compute inside reducer function<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const countReducer = (count, change) =&gt; count + change
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [count, changeCount] = React.useReducer(countReducer, initialCount)
+  const increment = () =&gt; changeCount(step)
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->as callback<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const countReducer = (state, action) =&gt; ({
+  ...state,
+  ...(typeof action === &#39;function&#39; ? action(state) : action),
+})
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [state, setState] = React.useReducer(countReducer, {
+    count: initialCount,
+  })
+  const { count } = state
+  const increment = () =&gt;
+    setState((currentState) =&gt; ({ count: currentState.count + step }))
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->as dispatch object<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>function countReducer(state, action) {
+  const { type, step } = action
+  switch (type) {
+    case &#39;increment&#39;: {
+      return {
+        ...state,
+        count: state.count + step,
+      }
+    }
+    default: {
+      throw new Error(`Unsupported action type: ${type}`)
+    }
+  }
+}
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [state, dispatch] = React.useReducer(countReducer, {
+    count: initialCount,
+  })
+  const { count } = state
+  const increment = () =&gt; dispatch({ type: &#39;increment&#39;, step })
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--></div><!--]--><!--[--><div id="usereducer" class="flex-1 overflow-hidden"><h3 id="usereducer"><a href="#usereducer"><!--[-->useReducer<!--]--></a></h3><ul><!--[--><li><!--[-->sometimes you want to separate the state logic from the components that make the state changes.<!--]--></li><li><!--[-->if you have multiple elements of state that typically change together, then having an object that contains those elements of state can be quite helpful.<!--]--></li><li><!--[-->as useState<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const countReducer = (state, newState) =&gt; newState
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [count, setCount] = React.useReducer(countReducer, initialCount)
+  const increment = () =&gt; setCount(count + step)
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->compute inside reducer function<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const countReducer = (count, change) =&gt; count + change
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [count, changeCount] = React.useReducer(countReducer, initialCount)
+  const increment = () =&gt; changeCount(step)
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->as callback<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>const countReducer = (state, action) =&gt; ({
+  ...state,
+  ...(typeof action === &#39;function&#39; ? action(state) : action),
+})
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [state, setState] = React.useReducer(countReducer, {
+    count: initialCount,
+  })
+  const { count } = state
+  const increment = () =&gt;
+    setState((currentState) =&gt; ({ count: currentState.count + step }))
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--><ul><!--[--><li><!--[-->as dispatch object<!--]--></li><!--]--></ul><!--[--><pre class="language-js" style=""><!--[--><code>function countReducer(state, action) {
+  const { type, step } = action
+  switch (type) {
+    case &#39;increment&#39;: {
+      return {
+        ...state,
+        count: state.count + step,
+      }
+    }
+    default: {
+      throw new Error(`Unsupported action type: ${type}`)
+    }
+  }
+}
+
+function Counter({ initialCount = 0, step = 1 }) {
+  const [state, dispatch] = React.useReducer(countReducer, {
+    count: initialCount,
+  })
+  const { count } = state
+  const increment = () =&gt; dispatch({ type: &#39;increment&#39;, step })
+  return &lt;button onClick={increment}&gt;{count}&lt;/button&gt;
+}
+</code><!--]--></pre><!--]--></div><!--]--></div></div><!--]--></div></div></div></div><div id="teleports"></div><script type="application/json" id="__NUXT_DATA__" data-ssr="true" data-src="/ui-libraries/_payload.json?afe9aa14-dbd7-4c42-966d-463fb7e42fd2">[{"state":1,"once":3,"_errors":5,"serverRendered":8,"path":9,"prerenderedAt":10},["Reactive",2],{},["Reactive",4],["Set"],["Reactive",6],{"js":7,"content-query-2RamU7D0yR":7,"content-query-IOCNnCWV66":7,"content-query-o797ZShzQi":7,"content-query-3rnwCQPYT6":7,"content-query-m44Ti9Cdcf":7,"content-query-QuMwKfhvcD":7,"content-query-b6nwHd7vFN":7,"content-query-emnhfoB8v4":7,"content-query-s287qto3iu":7,"content-query-XMXCxnB3gC":7,"content-query-VfD8NXMBH3":7,"content-query-4ZOFrcqOMI":7,"content-query-8U5KzRKcJx":7,"content-query-cr6JPVXBlJ":7,"content-query-1YUsK0u7Id":7,"content-query-DX7T2h6nvb":7,"content-query-Le1mV5Cfus":7},null,true,"/ui-libraries",1713292136882]</script>
+<script>window.__NUXT__={};window.__NUXT__.config={public:{mdc:{components:{prose:true,map:{p:"prose-p",a:"prose-a",blockquote:"prose-blockquote","code-inline":"prose-code-inline",code:"ProseCodeInline",em:"prose-em",h1:"prose-h1",h2:"prose-h2",h3:"prose-h3",h4:"prose-h4",h5:"prose-h5",h6:"prose-h6",hr:"prose-hr",img:"prose-img",ul:"prose-ul",ol:"prose-ol",li:"prose-li",strong:"prose-strong",table:"prose-table",thead:"prose-thead",tbody:"prose-tbody",td:"prose-td",th:"prose-th",tr:"prose-tr"}},headings:{anchorLinks:{h1:false,h2:true,h3:true,h4:true,h5:false,h6:false}}},content:{locales:[],defaultLocale:"",integrity:1713292126911,experimental:{stripQueryParameters:false,advanceQuery:false,clientDB:false},respectPathCase:false,api:{baseURL:"/api/_content"},navigation:{fields:[]},tags:{p:"prose-p",a:"prose-a",blockquote:"prose-blockquote","code-inline":"prose-code-inline",code:"ProseCodeInline",em:"prose-em",h1:"prose-h1",h2:"prose-h2",h3:"prose-h3",h4:"prose-h4",h5:"prose-h5",h6:"prose-h6",hr:"prose-hr",img:"prose-img",ul:"prose-ul",ol:"prose-ol",li:"prose-li",strong:"prose-strong",table:"prose-table",thead:"prose-thead",tbody:"prose-tbody",td:"prose-td",th:"prose-th",tr:"prose-tr"},highlight:false,wsUrl:"",documentDriven:false,host:"",trailingSlash:false,search:"",contentHead:true,anchorLinks:{depth:4,exclude:[1]}}},app:{baseURL:"/",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script></body></html>
