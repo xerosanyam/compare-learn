@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="p-2 text-white bg-black cursor-pointer w-fit w">
+      <a href="/">Compare & Learn</a>
+    </div>
     <NuxtPage />
   </div>
 </template>
