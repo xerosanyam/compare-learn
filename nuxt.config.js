@@ -12,10 +12,7 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href:
-            process.env.NODE_ENV !== 'development'
-              ? '/compare-learn/favicon.ico'
-              : '/favicon.ico',
+          href: '/favicon.ico',
         },
       ],
     },
@@ -25,6 +22,4 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/content',
   ],
-
-
 })
