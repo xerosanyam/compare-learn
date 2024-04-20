@@ -22,4 +22,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/content',
   ],
+
+  nitro:{
+    static:true
+  }
 })
