@@ -24,7 +24,7 @@
       <nuxt-link to="/mixed">Mixed</nuxt-link>
     </div>
     <div>
-      <nuxt-link to="/ds">Data Structures & Algorithms (Updated: 8 May 2024)</nuxt-link>
+      <nuxt-link to="/ds">Data Structures & Algorithms Notes (Updated: 8 May 2024)</nuxt-link>
     </div>
     <div>
       <nuxt-link to="/leetcode">Leetcode Answers (Updated: 8 May 2024)</nuxt-link>

@@ -1,4 +1,4 @@
 <template>
-  <ComparisonViewer :topic1="{ topic: 'Object', path: 'ds/insight' }"/>
+  <ComparisonViewer :topic1="{ topic: 'Data Structure & Algorithm Notes', path: 'ds/insight' }"/>
 </template>
 
