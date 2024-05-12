@@ -1,10 +1,12 @@
 ## 344 Reverse String
+
 ```
 Input: s = ["h","e","l","l","o"]
 Output: ["o","l","l","e","h"]
 ```
 
 ### Solution:
+
 ```
 var reverseString = function(s) {
     let left = 0;
@@ -20,4 +22,5 @@ var reverseString = function(s) {
 ```
 
 ### Insight:
-- Two pointer problem
+
+- 🔄 Two pointer problem
