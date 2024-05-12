@@ -1,5 +1,7 @@
 ### 977 Squares of a Sorted Array
 
+[link](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
+
 ```
 var sortedSquares = function(nums) {
     let left = 0
@@ -32,8 +34,3 @@ var sortedSquares = function(nums) {
 - 2 pointer problem with some interesting cases (outer loop should work according to answer)
 - 🔄 Two Pointers
 - 🔚 reverse fill the output
-
-## general
-
-- if you split the array, its better to write them in order on piece of paper to have more clarity
-- don't think of solving problem inplace until required

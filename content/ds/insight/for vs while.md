@@ -1,0 +1,16 @@
+## For vs While
+
+- I used to think its mostly same; but its important to understand the nuance b/w the 2 to solve DSA problems
+- for - rigid; while - free flowing
+
+### visualization
+
+#### for
+
+- works like stair; you start from bottom; you step up; you have fixed length
+- nature - pulsating & rythmic like wall clock
+
+#### while
+
+- works like rolling a dice; wait until condition is met or continue throwing until a condition is met
+- nature - like hourglass (depends on condition - position of hourglass, amount of sand)

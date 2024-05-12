@@ -11,7 +11,8 @@
 				</div>
 				<div v-for="page in pages" :key="page" class="pb-8 border-b">
 					<div class="flex flex-row space-x-8 sm:space-x-32">
-						<ContentDoc v-if="data1 && data1[page]" class="flex-1 overflow-hidden" :path="data1[page]._path" />
+						<ContentDoc v-if="data1 && data1[page]" class="flex-1 overflow-hidden"
+							:path="data1[page]._path" />
 						<ContentDoc v-if="data2 && data2[page]" :id="page" class="flex-1 overflow-hidden"
 							:path="data2[page]._path" />
 					</div>
@@ -31,7 +32,7 @@ const props = defineProps({
 let { data: data1 } = await useAsyncData('topic1', () => queryContent(props.topic1.path).find())
 let { data: data2 } = await useAsyncData('topic2', () => queryContent(props.topic2.path).find())
 
-const allPages = [...(data1?.value||[]), ...(data2?.value || [])];
+const allPages = [...(data1?.value || []), ...(data2?.value || [])];
 
 const getSlug = (path) => {
 	return path?.split('/').pop()
