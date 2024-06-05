@@ -15,7 +15,10 @@
       <nuxt-link to="/computer-science/paradigms">Computer Science -> Paradigms [Object vs Functional]</nuxt-link>
     </div>
     <div>
-      <nuxt-link to="/ui-libraries">UI Libraries [React vs Vue]</nuxt-link>
+      <nuxt-link to="/react-vs-svelte">UI Libraries [React vs Svelte]</nuxt-link>
+    </div>
+    <div>
+      <nuxt-link to="/react-vs-vue">UI Libraries [React vs Vue]</nuxt-link>
     </div>
     <div>
       <nuxt-link to="/concurrency">Concurrency (how JS works)</nuxt-link>

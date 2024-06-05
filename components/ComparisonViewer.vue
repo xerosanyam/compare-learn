@@ -10,9 +10,10 @@
 					<div v-if="topic2" class="w-full text-2xl font-bold text-center">{{ topic2.topic }}</div>
 				</div>
 				<div v-for="page in pages" :key="page" class="pb-8 border-b">
-					<div class="flex flex-row space-x-8 sm:space-x-32">
+					<div class="flex space-x-8 sm:space-x-32">
 						<ContentDoc v-if="data1 && data1[page]" class="flex-1 overflow-hidden"
 							:path="data1[page]._path" />
+						<div v-else class="flex-1">&nbsp;</div>
 						<ContentDoc v-if="data2 && data2[page]" :id="page" class="flex-1 overflow-hidden"
 							:path="data2[page]._path" />
 					</div>
