@@ -8,11 +8,13 @@ var sortedSquares = function(nums) {
     let right = nums.length - 1
     let ans = []
     for (let i = nums.length - 1; i >= 0; i--) {
-        if (Math.abs(nums[left]) < Math.abs(nums[right])) {
-            ans[i] = nums[right] * nums[right]
+        let leftVal = nums[left] * nums[left]
+        let rightVal = nums[right] * nums[right]
+        if (leftVal < rightVal) {
+            ans[i] = rightVal
             right--
         } else {
-            ans[i] = nums[left] * nums[left]
+            ans[i] = leftVal
             left++
         }
     }
@@ -20,9 +22,9 @@ var sortedSquares = function(nums) {
 };
 ```
 
-### type
+### nuances
 
-- sorted input
+- input was sorted
 
 #### insight
 
@@ -34,3 +36,7 @@ var sortedSquares = function(nums) {
 - 2 pointer problem with some interesting cases (outer loop should work according to answer)
 - 🔄 Two Pointers
 - 🔚 reverse fill the output
+
+### main trick
+
+- reverse fill the output
