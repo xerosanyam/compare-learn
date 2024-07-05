@@ -19,3 +19,13 @@ then we solved 2 questions
 then it talked about sliding window
 
 and subarray
+then 2 questions
+
+---
+
+then talked about prefix
+then 3 questions
+
+---
+
+starting with hashing
