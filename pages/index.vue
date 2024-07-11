@@ -27,10 +27,10 @@
       <nuxt-link to="/mixed">Mixed</nuxt-link>
     </div>
     <div>
-      <nuxt-link to="/ds">Data Structures & Algorithms Notes (Updated: 3 Jul 2024)</nuxt-link>
+      <nuxt-link to="/ds">Data Structures & Algorithms Notes (Updated: 10 Jul 2024)</nuxt-link>
     </div>
     <div>
-      <nuxt-link to="/leetcode">Leetcode Answers (Updated: 3 Jul 2024)</nuxt-link>
+      <nuxt-link to="/leetcode">Leetcode Answers (Updated: 10 Jul 2024)</nuxt-link>
     </div>
   </div>
 </template>
