@@ -9,6 +9,15 @@
       If you know Java, it makes it comparatively easier to learn Javascript.
     </p>
     <div>
+      <nuxt-link to="/ds">Data Structures & Algorithms Notes (Updated: 28 Feb 2025)</nuxt-link>
+    </div>
+    <div>
+      <nuxt-link to="/leetcode">Leetcode Answers (Updated: 25 Jul 2024)</nuxt-link>
+    </div>
+    <div>
+      <nuxt-link to="/system-design">System Design (Updated: 25 Jul 2024)</nuxt-link>
+    </div>
+    <div>
       <nuxt-link to="/programming-languages">Programming Languages [Java vs Javascript]</nuxt-link>
     </div>
     <div>
@@ -25,15 +34,6 @@
     </div>
     <div>
       <nuxt-link to="/mixed">Mixed</nuxt-link>
-    </div>
-    <div>
-      <nuxt-link to="/ds">Data Structures & Algorithms Notes (Updated: 21 Aug 2024)</nuxt-link>
-    </div>
-    <div>
-      <nuxt-link to="/leetcode">Leetcode Answers (Updated: 25 Jul 2024)</nuxt-link>
-    </div>
-    <div>
-      <nuxt-link to="/system-design">System Design (Updated: 25 Jul 2024)</nuxt-link>
     </div>
   </div>
 </template>
