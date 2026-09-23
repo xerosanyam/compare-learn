@@ -5,7 +5,7 @@
       <div>
         <div class="w-full text-2xl font-bold text-center">Mixed</div>
       </div>
-      <div v-for="page in pages" :key="page" class="pb-8 border-b">
+      <div v-for="page in pages" :key="page" :id="page" class="pb-8 border-b">
         <div class="flex flex-row space-x-8 sm:space-x-32">
           <ContentDoc v-if="data1[page]" class="flex-1 overflow-hidden" :path="data1[page]._path" />
           <div v-else class="flex items-center justify-center flex-1 h-40">
